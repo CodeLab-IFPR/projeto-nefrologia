@@ -8,7 +8,8 @@
 @endpush
 @section('title', 'Vídeo')
 @section('conteudo')
-<div class="container">
+
+<div class="container" style="margin-top: 20px">
     <div class="row">
         <div class="col s12">
             <div class="video-container">
