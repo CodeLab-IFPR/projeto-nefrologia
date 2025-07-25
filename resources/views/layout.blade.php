@@ -35,11 +35,19 @@
 
         .sidenav {
             max-width: 50vw;
-            min-width: 10vw;
+            width: fit-content;
             height: fit-content;
             background-color: #ef5350;
             padding-bottom: 20px;
         }
+
+        .collapsible-body a{
+            color: black !important;
+            padding: 0.5em 1.5em !important;
+            display: block !important;
+            font: bold !important;
+        }
+
     </style>
 </head>
 
@@ -51,15 +59,15 @@
                 <i class="material-icons">menu</i>
             </a>
 
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <ul id="nav" class="left hide-on-med-and-down">
                 <li>
-                    <a href="{{ route('user.index') }}" class="valign-wrapper">
-                        <span class="material-icons" style="margin-left: 1em;">home</span>Home
+                    <a href="{{ route('user.index') }}" class="valign-wrapper nav-option">
+                        <span class="material-icons">home</span>Início
                     </a>
                 </li>
                 <li>
-                    <a href="" class="valign-wrapper">
-                        <span class="material-icons" style="margin-left: 1em;">play_arrow</span>Vídeos
+                    <a href="" class="valign-wrapper nav-option">
+                        <span class="material-icons">play_arrow</span>Vídeos
                     </a>
                 </li>
             </ul>
@@ -67,7 +75,7 @@
             <ul class="right hide-on-med-and-down">
                 <li>
                     <a class="dropdown-trigger valign-wrapper" href="#!" data-target="dropdown-admin">
-                        <span class="material-icons" style="margin-right: 1em;">admin_panel_settings</span>Admin
+                        <span class="material-icons">admin_panel_settings</span>Admin
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
                 </li>
@@ -96,7 +104,7 @@
         </li>
         <li>
             <a href="{{ route('user.index') }}" class="valign-wrapper nav-option">
-                <span class="material-icons">home</span>Home
+                <span class="material-icons">home</span>Início
             </a>
         </li>
         <li>
@@ -112,15 +120,13 @@
                         <i class="material-icons right">arrow_drop_down</i>
                     </div>
                     <div class="collapsible-body">
-                        <ul>
-                            @if (!Auth::check())
-                                <li><a href="{{ route('admin.cadastro') }}">Cadastrar Vídeo</a></li>
-                                <li><a href="{{ route('admin.gerenciar') }}">Gerenciar</a></li>
-                                <li><a href="{{ route('login.logout') }}">Sair</a></li>
+                            @if (Auth::check())
+                                <a href="{{ route('admin.cadastro') }}">Cadastrar Vídeo</a>
+                                <a href="{{ route('admin.gerenciar') }}">Gerenciar</a>
+                                <a href="{{ route('login.logout') }}">Sair</a>
                             @else
-                                <li><a href="{{ route('login.form') }}">Logar</a></li>
+                                <a href="{{ route('login.form') }}">Logar</a>
                             @endif
-                        </ul>
                     </div>
                 </li>
             </ul>
