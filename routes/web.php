@@ -4,6 +4,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
+use App\Mail\RedefinirSenha;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ForgotPasswordController;
 
 Route::view('/about', 'about');
 Route::redirect('/sobre', 'about');
@@ -31,3 +34,9 @@ Route::resource('videos', VideoController::class);
 // Rotas para editar vídeos:
 Route::get('/videos/{id}/edit', [VideoController::class, 'edit'])->name('videos.edit');
 Route::put('/videos/{id}', [VideoController::class, 'update'])->name('videos.update');
+
+
+// Rotas para redefinir senha
+Route::get('/redefinir-senha',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/redefinir-senha', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
