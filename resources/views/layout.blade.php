@@ -112,7 +112,7 @@
     <footer class="page-footer #ef5350 red lighten-1" style="padding: 0; margin: 0;">
         <div style="display: flex; justify-content: center; align-items: center; padding: 8px 0; width: 100%;">
             <h6 class="white-text" style="margin: 0; font-size: 1rem;">
-                Projeto desenvolvido pelo IFPR
+              <a href="https://codelabifpr.com.br/" style="color: #FFFFFF">  Desenvolvido por CodeLab – IFPR </a>
             </h6>
         </div>
     </footer>
