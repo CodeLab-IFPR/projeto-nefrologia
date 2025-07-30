@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function auth(Request $request)
     {
         $credenciais = $request->validate([
-            'login' => 'required',
+            'email' => 'required|email',
             'password' => 'required'
         ]);
 
@@ -19,7 +19,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/admin/cadastro');
         } else {
-            return redirect()->back()->with('erro', 'Login inválido');
+            return redirect()->back()->with('erro', 'email ou senha inválido');
         }
     }
     public function logout(Request $request){
