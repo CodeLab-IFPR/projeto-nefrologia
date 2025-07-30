@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\RedefinirSenha;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ForgotPasswordController;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\AdminController;
 
 Route::view('/about', 'about');
 Route::redirect('/sobre', 'about');
@@ -37,6 +39,20 @@ Route::put('/videos/{id}', [VideoController::class, 'update'])->name('videos.upd
 
 
 // Rotas para redefinir senha
-Route::get('/redefinir-senha',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::get('/redefinir-senha', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/redefinir-senha', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
+
+// Painel administrativo
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+
+    // Painel do administrador
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    // Editar senha
+    Route::get('/seguranca', [AdminController::class, 'editPassword'])->name('seguranca.edit');
+
+ // Atualizar senha
+     Route::post('/seguranca', [AdminController::class, 'updatePassword'])->name('seguranca.update');
+
+});
