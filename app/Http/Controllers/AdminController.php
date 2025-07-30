@@ -26,7 +26,7 @@ class AdminController extends Controller
         ]);
         $user = \App\Models\User::find(auth()->id());
         if (!Hash::check($request->current_password, $user->password)) {
-            return redirect()->back()->withErrors(['current_password' => 'Senha atual incorreta.']);
+            return redirect()->back()->with(['status' => 'Senha atual está incorreta.']);
         }
         $user->password = Hash::make($request->new_password);
         $user->save();

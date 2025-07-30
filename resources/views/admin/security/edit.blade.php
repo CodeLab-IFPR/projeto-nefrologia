@@ -1,79 +1,151 @@
-@extends('layout') {{-- Usando seu layout principal por enquanto --}}
+@extends('layout')
 
 @section('title', 'Alterar Senha')
 
 @section('conteudo')
 
-<div class="container" style="margin-top: 40px; margin-bottom: 40px;">
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            
-            {{-- Usando o card do Materialize para agrupar o formulário --}}
-            <div class="card-panel">
-                <h4 class="center-align">Alterar Minha Senha</h4>
+    <style>
+        .change-password-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 40px 15px;
+            background-color: #f8f9fa;
+        }
 
-                {{-- Bloco para exibir a mensagem de SUCESSO --}}
-                @if (session('success'))
-                    <div class="card-panel green lighten-4 green-text text-darken-4">
-                        {{ session('success') }}
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            color: rgb(24, 123, 205);
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #80bdff;
+            box-shadow: 0 0 0 3px rgb(20, 103, 175);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: rgb(24, 123, 205);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-submit:hover {
+            background-color: rgb(20, 103, 175);
+        }
+
+
+        .status-message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .status-message.success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-message.error {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+
+        .validation-error {
+            color: #dc3545;
+            font-size: 0.875em;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+
+    <div class="change-password-wrapper">
+        <div class="form-container">
+            <h2>Alterar Senha</h2>
+
+            @if (session('status'))
+                @if (Str::contains(session('status'), 'incorreta'))
+                    <div class="status-message error">
+                        {{ session('status') }}
+                    </div>
+                @else
+                    <div class="status-message success">
+                        {{ session('status') }}
                     </div>
                 @endif
+            @endif
 
-                {{-- Bloco para exibir a mensagem de ERRO GERAL (se usarmos) --}}
-                @if (session('error'))
-                     <div class="card-panel red lighten-4 red-text text-darken-4">
-                        {{ session('error') }}
-                    </div>
-                @endif
+            <form method="POST" action="{{ route('admin.seguranca.update') }}">
+                @csrf
 
-                <div class="row">
-                    <form class="col s12" method="POST" action="{{ route('admin.seguranca.update') }}">
-                        @csrf
-                        <div class="row">
-
-                            {{-- CAMPO SENHA ATUAL --}}
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">lock_open</i>
-                                <input id="current_password" name="current_password" type="password" required>
-                                <label for="current_password">Senha Atual</label>
-                                @error('current_password')
-                                    {{-- Exibe o erro específico da senha atual incorreta --}}
-                                    <span class="helper-text red-text">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            {{-- CAMPO NOVA SENHA --}}
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">lock</i>
-                                <input id="new_password" name="new_password" type="password" required>
-                                <label for="new_password">Nova Senha</label>
-                                @error('new_password')
-                                    {{-- Exibe erros de validação (ex: menos de 8 caracteres) --}}
-                                    <span class="helper-text red-text">As senhas não coincidem</span>
-                                @enderror
-                            </div>
-
-                            {{-- CAMPO CONFIRMAÇÃO DA NOVA SENHA --}}
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">lock_outline</i>
-                                <input id="new_password_confirmation" name="new_password_confirmation" type="password" required>
-                                <label for="new_password_confirmation">Confirme a Nova Senha</label>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col s12">
-                                <button class="btn waves-effect waves-light red lighten-1 right" type="submit">
-                                    Salvar Nova Senha
-                                    <i class="material-icons right">save</i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <label for="current_password">Senha Atual</label>
+                    <input id="current_password" name="current_password" type="password" required>
+                    @error('current_password')
+                        <span class="validation-error">{{ $message }}</span>
+                    @enderror
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label for="new_password">Nova Senha</label>
+                    <input id="new_password" name="new_password" type="password" required>
+                    @error('new_password')
+                        <span class="validation-error"> As senhas não coincidem </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="new_password_confirmation">Confirmar Nova Senha</label>
+                    <input id="new_password_confirmation" name="new_password_confirmation" type="password" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Salvar nova senha</button>
+            </form>
         </div>
     </div>
-</div>
 
 @endsection
