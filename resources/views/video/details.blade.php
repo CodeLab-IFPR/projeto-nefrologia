@@ -1,4 +1,11 @@
 @extends('layout')
+@push('styles')
+    <style>
+        .video-container {
+            margin-top: 1.5em;
+        }
+    </style>
+@endpush
 @section('title', 'Vídeo')
 @section('conteudo')
 
@@ -6,7 +13,7 @@
     <div class="row">
         <div class="col s12">
             <div class="video-container">
-                <iframe width="853" height="480" src="{{ $video->link }}" title="{{ $video->title }}" frameborder="0"
+                <iframe id="video-iframe" width="853" height="480" src="{{ $video->link }}" title="{{ $video->title }}" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
