@@ -76,7 +76,7 @@
                         <tr>
                             <td>{{ $video->id }}</td>
                             <td>{{ $video->title }}</td>
-                            <td>{{ $video->user->login }}</td>
+                            <td>{{ $video->user->name }}</td>
                             <td><a href="#edit-{{ $video->id }}"
                                     class="btn-floating modal-trigger  waves-effect waves-light orange"><i
                                         class="material-icons">mode_edit</i></a>

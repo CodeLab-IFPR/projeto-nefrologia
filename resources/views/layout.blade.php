@@ -54,7 +54,7 @@
 <body>
     <nav class="#ef5350 red lighten-1">
         <div class="nav-wrapper container">
-            <a href="{{ route('user.index') }}" class="brand-logo center">Projeto Nefrologia</a>
+            <a href="{{ route('user.index') }}" class="brand-logo center">ConectaRim</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger left">
                 <i class="material-icons">menu</i>
             </a>
@@ -84,8 +84,8 @@
             <!-- Dropdown Structure -->
             @if (Auth::check())
                 <ul id="dropdown-admin" class="dropdown-content" style="top: 100% !important;">
-                    <li><a href="{{ route('admin.cadastro') }}" style="color: #ef5350;">Cadastrar Vídeo</a></li>
-                    <li><a href="{{ route('admin.gerenciar') }}" style="color: #ef5350;">Gerenciar</a></li>
+                    <li><a href="{{ route('admin.dashboard') }}" style="color: #ef5350;">Dashboard</a></li>
+                    <li><a href="{{ route('admin.gerenciar') }}" style="color: #ef5350;">Gerenciar Vídeos</a></li>
                     <li><a href="{{ route('login.logout') }}" style="color: #ef5350;">Sair</a></li>
                 </ul>
             @else
