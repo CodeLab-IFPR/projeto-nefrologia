@@ -23,20 +23,6 @@ Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-// Rotas de cadastro de vídeos
-Route::middleware('auth')->get('/admin/cadastro', [VideoController::class, 'create'])->name('admin.cadastro');
-Route::middleware('auth')->get('/admin/gerenciar', [VideoController::class, 'gerenciar'])->name('admin.gerenciar');
-Route::middleware(['auth', 'youtube'])->post('/admin/cadastro', [VideoController::class, 'store'])->name('admin.cadastro.post');
-
-//Rota para deletar vídeo:
-Route::delete('admin/video/delete/{id}', [VideoController::class, 'destroy'])->name('admin.delete');
-// Rotas RESTful para vídeos
-Route::resource('videos', VideoController::class);
-
-// Rotas para editar vídeos:
-Route::get('/videos/{id}/edit', [VideoController::class, 'edit'])->name('videos.edit');
-Route::put('/videos/{id}', [VideoController::class, 'update'])->name('videos.update');
-
 
 // Rotas para redefinir senha
 Route::get('/redefinir-senha', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
@@ -52,7 +38,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     // Editar senha
     Route::get('/seguranca', [AdminController::class, 'editPassword'])->name('seguranca.edit');
 
- // Atualizar senha
-     Route::post('/seguranca', [AdminController::class, 'updatePassword'])->name('seguranca.update');
+    // Atualizar senha
+    Route::post('/seguranca', [AdminController::class, 'updatePassword'])->name('seguranca.update');
 
+    Route::resource('videos', VideoController::class);
 });

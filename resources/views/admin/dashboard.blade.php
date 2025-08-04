@@ -4,6 +4,7 @@
 
 @section('conteudo')
 
+
     {{-- Adicionamos um CSS customizado para esta página --}}
     <style>
         .panel-wrapper {
@@ -34,16 +35,15 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             text-decoration: none;
-            color: #0d47a1;
-            /* Azul escuro no hover */
+            color: rgb(20, 103, 175);
+
         }
 
         /* Estilo do Ícone */
         .panel-card i.material-icons {
             font-size: 4rem;
             /* Tamanho grande para o ícone */
-            color: #1565c0;
-            /* Tom de azul para o ícone */
+            color: #187bcd;
             margin-bottom: 15px;
         }
 
@@ -57,6 +57,37 @@
         .panel-card-col {
             margin-bottom: 20px;
         }
+        /* --- Estilos para Telas Pequenas (Celulares) --- */
+@media only screen and (max-width: 600px) {
+
+    .panel-wrapper {
+        padding: 20px 0; /* Menos espaçamento no celular */
+    }
+
+    /* Ajusta o card para o modo "lista" no celular */
+    .panel-card {
+        min-height: auto;       /* Remove a altura mínima */
+        flex-direction: row;    /* Ícone e texto ficam LADO A LADO */
+        justify-content: flex-start; /* Alinha os itens à esquerda */
+        padding: 20px;
+    }
+
+    /* Deixa o ícone menor e o afasta do texto */
+    .panel-card i.material-icons {
+        font-size: 2.5rem;  /* Ícone significativamente menor */
+        margin-bottom: 0;   /* Remove a margem de baixo */
+        margin-right: 20px; /* Cria uma margem à direita */
+    }
+
+    .panel-card span {
+        font-size: 1rem; /* Fonte do texto um pouco menor */
+    }
+
+    /* Ajusta o título principal da página no celular */
+    .panel-wrapper h3 {
+        font-size: 2.2rem;
+    }
+}
     </style>
 
     <div class="container panel-wrapper">
@@ -74,7 +105,7 @@
 
             {{-- Card: Gerenciar Vídeos --}}
             <div class="col s12 m6 l3 panel-card-col">
-                <a href="{{ route('admin.gerenciar') }}" class="panel-card">
+                <a href="{{ route('admin.videos.index') }}" class="panel-card">
                     <i class="material-icons">video_library</i>
                     <span>Gerenciar Vídeos</span>
                 </a>
@@ -82,7 +113,7 @@
 
             {{-- Card: Cadastrar Usuário --}}
             <div class="col s12 m6 l3 panel-card-col">
-                <a href="{{ route('admin.cadastro') }}" class="panel-card">
+                <a href="{{ route('admin.videos.create') }}" class="panel-card">
                     <i class="material-icons">person_add</i>
                     <span>Cadastrar Usuário</span>
                 </a>

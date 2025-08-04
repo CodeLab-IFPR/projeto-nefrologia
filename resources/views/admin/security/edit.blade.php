@@ -11,7 +11,7 @@
             justify-content: center;
             width: 100%;
             padding: 40px 15px;
-            background-color: #f8f9fa;
+
         }
 
         .form-container {
@@ -101,6 +101,9 @@
             display: block;
             margin-top: 5px;
         }
+        body{
+            background-color: #f8f9fa
+        }
     </style>
 
     <div class="change-password-wrapper">
@@ -134,7 +137,7 @@
                     <label for="new_password">Nova Senha</label>
                     <input id="new_password" name="new_password" type="password" required>
                     @error('new_password')
-                        <span class="validation-error"> As senhas não coincidem </span>
+                        <span class="validation-error">{{ $message }}</span>
                     @enderror
                 </div>
 
