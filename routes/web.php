@@ -4,11 +4,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
-use App\Mail\RedefinirSenha;
-use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ForgotPasswordController;
-use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::view('/about', 'about');
 Route::redirect('/sobre', 'about');
@@ -40,6 +38,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     // Atualizar senha
     Route::post('/seguranca', [AdminController::class, 'updatePassword'])->name('seguranca.update');
-
+    // Rotas para o vídeo, CRUD completo
     Route::resource('videos', VideoController::class);
+
+    // Rotas para os usuários, CRUD completo
+    Route::resource('users', UserController::class);
 });

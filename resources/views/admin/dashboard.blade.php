@@ -57,37 +57,46 @@
         .panel-card-col {
             margin-bottom: 20px;
         }
+
         /* --- Estilos para Telas Pequenas (Celulares) --- */
-@media only screen and (max-width: 600px) {
+        @media only screen and (max-width: 600px) {
 
-    .panel-wrapper {
-        padding: 20px 0; /* Menos espaçamento no celular */
-    }
+            .panel-wrapper {
+                padding: 20px 0;
+                /* Menos espaçamento no celular */
+            }
 
-    /* Ajusta o card para o modo "lista" no celular */
-    .panel-card {
-        min-height: auto;       /* Remove a altura mínima */
-        flex-direction: row;    /* Ícone e texto ficam LADO A LADO */
-        justify-content: flex-start; /* Alinha os itens à esquerda */
-        padding: 20px;
-    }
+            /* Ajusta o card para o modo "lista" no celular */
+            .panel-card {
+                min-height: auto;
+                /* Remove a altura mínima */
+                flex-direction: row;
+                /* Ícone e texto ficam LADO A LADO */
+                justify-content: flex-start;
+                /* Alinha os itens à esquerda */
+                padding: 20px;
+            }
 
-    /* Deixa o ícone menor e o afasta do texto */
-    .panel-card i.material-icons {
-        font-size: 2.5rem;  /* Ícone significativamente menor */
-        margin-bottom: 0;   /* Remove a margem de baixo */
-        margin-right: 20px; /* Cria uma margem à direita */
-    }
+            /* Deixa o ícone menor e o afasta do texto */
+            .panel-card i.material-icons {
+                font-size: 2.5rem;
+                /* Ícone significativamente menor */
+                margin-bottom: 0;
+                /* Remove a margem de baixo */
+                margin-right: 20px;
+                /* Cria uma margem à direita */
+            }
 
-    .panel-card span {
-        font-size: 1rem; /* Fonte do texto um pouco menor */
-    }
+            .panel-card span {
+                font-size: 1rem;
+                /* Fonte do texto um pouco menor */
+            }
 
-    /* Ajusta o título principal da página no celular */
-    .panel-wrapper h3 {
-        font-size: 2.2rem;
-    }
-}
+            /* Ajusta o título principal da página no celular */
+            .panel-wrapper h3 {
+                font-size: 2.2rem;
+            }
+        }
     </style>
 
     <div class="container panel-wrapper">
@@ -113,7 +122,7 @@
 
             {{-- Card: Cadastrar Usuário --}}
             <div class="col s12 m6 l3 panel-card-col">
-                <a href="{{ route('admin.videos.create') }}" class="panel-card">
+                <a href="{{ route('admin.users.create') }}" class="panel-card">
                     <i class="material-icons">person_add</i>
                     <span>Cadastrar Usuário</span>
                 </a>
