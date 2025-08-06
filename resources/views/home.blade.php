@@ -1,7 +1,10 @@
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@endpush
 @extends('layout')
 @section('title', 'Home')
 @section('conteudo')
-    <div class="row container" style="margin-top: 50px;">
+    <div class="row container">
         @foreach ($videos as $video)
             <div class="col s12 m3" style="margin-top: 30px;">
                 <div class="card" style="height: 350px;"> <!-- Altura fixa para todos os cards -->
@@ -25,7 +28,7 @@
             </div>
         @endforeach
     </div>
-    <div class="row center" style = "#ef5350 red lighten-1">
+    <div class="row center">
         {{ $videos->links('custom.pagination') }}
     </div>
 @endsection

@@ -1,15 +1,8 @@
 @extends('layout')
-@push('styles')
-    <style>
-        .video-container {
-            margin-top: 1.5em;
-        }
-    </style>
-@endpush
 @section('title', 'Vídeo')
 @section('conteudo')
 
-<div class="container" style="margin-top: 20px">
+<div class="container">
     <div class="row">
         <div class="col s12">
             <div class="video-container">
