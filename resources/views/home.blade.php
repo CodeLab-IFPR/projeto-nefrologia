@@ -3,7 +3,7 @@
 @section('conteudo')
    <div class="row container" style="margin-top: 40px;">
     @foreach ($videos as $video)
-        <div class="col s12 m3" style="margin-bottom: 40px;">
+        <div class="col s12 m6 l4 xl3" style="margin-bottom: 40px;">
             <a href="{{ route('video.details', $video->slug) }}"> 
                 <div class="video-card">
                     <div class="video-thumb">
