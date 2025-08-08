@@ -10,7 +10,7 @@ class SiteController extends Controller
     public function index()
     {
         // return 'index';
-        $videos = Video::paginate(4);
+        $videos = Video::paginate(8);
 
         return view('home', compact('videos'));
     }
