@@ -90,7 +90,6 @@
             color: #721c24;
         }
 
-        /* Para o erro de e-mail não encontrado */
         .validation-error {
             color: #721c24;
             font-size: 14px;

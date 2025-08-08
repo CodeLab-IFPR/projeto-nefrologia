@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('styles')
 
     <style>
@@ -41,20 +42,19 @@
             padding-bottom: 20px;
         }
 
-        .collapsible-body a{
+        .collapsible-body a {
             color: black !important;
             padding: 0.5em 1.5em !important;
             display: block !important;
             font: bold !important;
         }
-
     </style>
 </head>
 
 <body>
     <nav class="#ef5350 red lighten-1">
         <div class="nav-wrapper container">
-            <a href="{{ route('user.index') }}" class="brand-logo center">Projeto Nefrologia</a>
+            <a href="{{ route('user.index') }}" class="brand-logo center">Projeto nefrologia</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger left">
                 <i class="material-icons">menu</i>
             </a>
@@ -84,8 +84,8 @@
             <!-- Dropdown Structure -->
             @if (Auth::check())
                 <ul id="dropdown-admin" class="dropdown-content" style="top: 100% !important;">
-                    <li><a href="{{ route('admin.cadastro') }}" style="color: #ef5350;">Cadastrar Vídeo</a></li>
-                    <li><a href="{{ route('admin.gerenciar') }}" style="color: #ef5350;">Gerenciar</a></li>
+                    <li><a href="{{ route('admin.dashboard') }}" style="color: #ef5350;">Dashboard</a></li>
+                    <li><a href="{{ route('admin.videos.index') }}" style="color: #ef5350;">Gerenciar Vídeos</a></li>
                     <li><a href="{{ route('login.logout') }}" style="color: #ef5350;">Sair</a></li>
                 </ul>
             @else
@@ -98,9 +98,9 @@
 
     <ul class="sidenav" id="mobile-demo">
         <li>
-        <a href="#" data-target="mobile-demo" class="valign-wrapper sidenav-close nav-option">
-            <span class="material-icons">arrow_left</span> Voltar
-        </a>
+            <a href="#" data-target="mobile-demo" class="valign-wrapper sidenav-close nav-option">
+                <span class="material-icons">arrow_left</span> Voltar
+            </a>
         </li>
         <li>
             <a href="{{ route('user.index') }}" class="valign-wrapper nav-option">
@@ -120,13 +120,13 @@
                         <i class="material-icons right">arrow_drop_down</i>
                     </div>
                     <div class="collapsible-body">
-                            @if (Auth::check())
-                                <a href="{{ route('admin.cadastro') }}">Cadastrar Vídeo</a>
-                                <a href="{{ route('admin.gerenciar') }}">Gerenciar</a>
-                                <a href="{{ route('login.logout') }}">Sair</a>
-                            @else
-                                <a href="{{ route('login.form') }}">Logar</a>
-                            @endif
+                        @if (Auth::check())
+                            <a href="{{ route('admin.dashboard') }}"> Dashboard</a>
+                            <a href="{{ route('admin.videos.index') }}">Gerenciar vídeo</a>
+                            <a href="{{ route('login.logout') }}">Sair</a>
+                        @else
+                            <a href="{{ route('login.form') }}">Logar</a>
+                        @endif
                     </div>
                 </li>
             </ul>
@@ -140,14 +140,14 @@
     <footer class="page-footer #ef5350 red lighten-1" style="padding: 0; margin: 0;">
         <div style="display: flex; justify-content: center; align-items: center; padding: 8px 0; width: 100%;">
             <h6 class="white-text" style="margin: 0; font-size: 1rem;">
-              <a href="https://codelabifpr.com.br/" style="color: #FFFFFF">  Desenvolvido por CodeLab – IFPR </a>
+                <a href="https://codelabifpr.com.br/" style="color: #FFFFFF"> Desenvolvido por CodeLab – IFPR </a>
             </h6>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             M.Sidenav.init(elems);
 
@@ -163,7 +163,7 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
             M.Modal.init(elems);
         });

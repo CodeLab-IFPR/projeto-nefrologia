@@ -66,7 +66,7 @@
 
     <div class="form-container">
         <div class="custom-form">
-            <form class="col s12" method="post" action="{{ route('admin.cadastro.post') }}">
+            <form class="col s12" method="post" action="{{  route('admin.videos.store') }}">
                 @csrf
                 <!-- Campo Link -->
                 <div class="row">
@@ -84,6 +84,10 @@
                         <label for="title" class="active">Título</label>
                     </div>
                 </div>
+                {{-- @error('slug')
+                    <div class="message-box error-message">
+                        <span>{{ $message }}</span>
+                    </div> --}}
                 <!-- Campo Descrição com textarea -->
                 <div class="row">
                     <div class="input-field col s12">
