@@ -1,51 +1,9 @@
 @extends('layout')
 @section('title', 'Login')
 @section('conteudo')
-    <style>
-        /* Centraliza o formulário horizontalmente */
-        .form-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px auto;
-            /* Espaço superior e inferior reduzido */
-        }
-
-        /* Formulário com container menor */
-        .custom-form {
-            background-color: #f5f5f5;
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        /* Ícones menores */
-        .custom-form i.material-icons.prefix {
-            font-size: 16px;
-        }
-
-        /* Botão com ícone menor */
-        .custom-form button i.material-icons.right {
-            font-size: 16px;
-        }
-
-        /* Mensagens de erro */
-        .error-message {
-            background-color: #ffebee;
-            color: #c62828;
-            padding: 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .RecuperarSenha {
-            display: flex;
-            height: 25px;
-            flex-direction: row-reverse;
-            margin-bottom: 20px;
-        }
-    </style>
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/login/form.css') }}">
+@endpush
 
     <div class="form-container">
         <div class="custom-form">
@@ -63,9 +21,7 @@
                 @endforeach
             @endif
             @if (session('status'))
-                {{-- Você pode criar uma classe CSS para .status-message ou usar um estilo inline --}}
-                <div class="card-panel green lighten-4 green-text text-darken-4"
-                    style="padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                <div class="status-message card-panel green lighten-4 green-text text-darken-4">
                     {{ session('status') }}
                 </div>
             @endif
