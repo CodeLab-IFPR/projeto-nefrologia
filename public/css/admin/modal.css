@@ -1,0 +1,9 @@
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-footer form {
+    margin: 0;
+}
