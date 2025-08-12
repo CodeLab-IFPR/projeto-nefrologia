@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     @stack('styles')
 </head>
@@ -15,7 +16,7 @@
 <body>
     <nav>
         <div class="nav-wrapper container">
-            <a href="{{ route('user.index') }}" class="brand-logo center">Projeto Nefrologia</a>
+            <a href="{{ route('user.index') }}" class="brand-logo center">Projeto nefrologia</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger left">
                 <i class="material-icons">menu</i>
             </a>
@@ -45,8 +46,8 @@
             <!-- Dropdown Structure -->
             @if (Auth::check())
                 <ul id="dropdown-admin" class="dropdown-content">
-                    <li><a href="{{ route('admin.cadastro') }}">Cadastrar Vídeo</a></li>
-                    <li><a href="{{ route('admin.gerenciar') }}">Gerenciar</a></li>
+                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('admin.videos.index') }}">Gerenciar Vídeos</a></li>
                     <li><a href="{{ route('login.logout') }}">Sair</a></li>
                 </ul>
             @else
@@ -59,9 +60,9 @@
 
     <ul class="sidenav" id="mobile-demo">
         <li>
-        <a href="#" data-target="mobile-demo" class="valign-wrapper sidenav-close nav-option">
-            <span class="material-icons">arrow_left</span> Voltar
-        </a>
+            <a href="#" data-target="mobile-demo" class="valign-wrapper sidenav-close nav-option">
+                <span class="material-icons">arrow_left</span> Voltar
+            </a>
         </li>
         <li>
             <a href="{{ route('user.index') }}" class="valign-wrapper nav-option">
@@ -79,15 +80,15 @@
                     <div id="dropdown-admin" class="collapsible-header valign-wrapper nav-option">
                         <span class="material-icons">admin_panel_settings</span>Admin
                         <i class="material-icons right">arrow_drop_down</i>
-                    </div>
+                    </div>                        
                     <div id="dropdown-admin" class="collapsible-body">
                             @if (Auth::check())
-                                <a href="{{ route('admin.cadastro') }}">Cadastrar Vídeo</a>
-                                <a href="{{ route('admin.gerenciar') }}">Gerenciar</a>
-                                <a href="{{ route('login.logout') }}">Sair</a>
-                            @else
-                                <a href="{{ route('login.form') }}">Logar</a>
-                            @endif
+                            <a href="{{ route('admin.dashboard') }}"> Dashboard</a>
+                            <a href="{{ route('admin.videos.index') }}">Gerenciar vídeo</a>
+                            <a href="{{ route('login.logout') }}">Sair</a>
+                        @else
+                            <a href="{{ route('login.form') }}">Logar</a>
+                        @endif
                     </div>
                 </li>
             </ul>
@@ -108,7 +109,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             M.Sidenav.init(elems);
 
@@ -124,7 +125,7 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
             M.Modal.init(elems);
         });

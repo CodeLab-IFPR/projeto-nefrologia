@@ -17,7 +17,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credenciais)) {
             $request->session()->regenerate();
-            return redirect()->intended('/admin/cadastro');
+            return redirect()->intended('/admin/dashboard');
         } else {
             return redirect()->back()->with('erro', 'email ou senha inválido');
         }
