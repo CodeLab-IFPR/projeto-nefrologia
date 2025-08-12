@@ -1,29 +1,18 @@
 @extends('layout')
 @section('title', 'Editar Vídeo')
 @section('conteudo')
-<style>
-    .error-box {
-        background-color: #ffebee; /* Fundo vermelho bem claro */
-        border: 1px solid #d32f2f; /* Borda vermelha */
-        border-radius: 5px;
-        padding: 15px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .error-box ul {
-        margin: 0;
-        padding-left: 20px; /* Adiciona recuo para a lista */
-    }
-</style>
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/admin/editVideo.css') }}">
+@endpush
 
-<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+<div class="container edit-container">
     <div class="row">
         <div class="col s12">
             <h4><i class="material-icons">edit</i> Editar Vídeo: {{ $video->title }}</h4>
 
             {{-- Bloco para exibir erros de validação --}}
             @if ($errors->any())
-                <div class="error-box red-text text-darken-4" style="margin-top: 10px;">
+                <div id="error" class="error-box red-text text-darken-4">
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -33,7 +22,7 @@
             @endif
 
             {{-- SEU FORMULÁRIO DE EDIÇÃO --}}
-            <form action="{{ route('admin.videos.update', $video->id) }}" method="POST" style="margin-top: 20px;">
+            <form action="{{ route('admin.videos.update', $video->id) }}" method="POST" id="edit-video-form">
                 @method('PUT')
                 @csrf
 
@@ -56,9 +45,9 @@
                     <label for="description" class="active">Descrição</label>
                 </div>
 
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <div class="form-footer">
                     <a href="{{ route('admin.videos.index') }}" class="waves-effect waves-grey btn-flat">Cancelar</a>
-                    <button type="submit" class="waves-effect waves-light btn" style="background-color: #187bcd;">Salvar Alterações</button>
+                    <button type="submit" class="waves-effect waves-light btn">Salvar Alterações</button>
                 </div>
             </form>
 
