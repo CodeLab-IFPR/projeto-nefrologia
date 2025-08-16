@@ -1,3 +1,7 @@
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/admin/modal.css') }}">
+@endpush
+
 <!-- Modal Structure -->
 <div id="delete-{{ $video->id }}" class="modal">
     <div class="modal-content">
@@ -5,9 +9,9 @@
         <p>Tem certeza que deseja excluir o vídeo {{ $video->title }}?</p>
     </div>
 
-    <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 10px;">
+    <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn blue">Cancelar</a>
-        <form action="{{ route('admin.delete', $video->id) }}" method="post" style="margin: 0;">
+        <form action="{{ route('admin.videos.destroy', $video->id) }}" method="post">
             @method('DELETE')
             @csrf
             <button type="submit" class="waves-effect waves-green btn red">Excluir</button>

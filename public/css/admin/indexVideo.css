@@ -1,0 +1,57 @@
+#video-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#video-container h4 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+#create-video{
+    margin-bottom: 20px;
+}
+
+.blue{
+    background-color: #187bcd;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chip {
+    background-color: #187bcd;
+}
+
+.responsive-table {
+    margin-top: 20px;
+}
+
+#action-th {
+    width: 150px;
+}
+
+.responsive-table-body td {
+    vertical-align: middle;
+}
+
+.responsive-table-body a{
+    background-color: #187bcd;
+}
+
+#pagination {
+    margin-top: 20px;
+    background-color: none;
+}
+
+.modal-footer button {
+    background-color: #187bcd;
+}
+
+.modal .modal-content h4,
+.modal .modal-content label {
+    color: #333;
+}

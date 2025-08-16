@@ -1,55 +1,14 @@
 @extends('layout')
 @section('title', 'Cadastro')
 @section('conteudo')
-    <style>
-        .form-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px auto;
-        }
-
-        .custom-form {
-            background-color: #f5f5f5;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .message-box {
-            margin-bottom: 20px;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 14px;
-            text-align: center;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .error-message {
-            background-color: #ffebee;
-            color: #d32f2f;
-            border: 1px solid #d32f2f;
-        }
-
-        .success-message {
-            background-color: #e8f5e9;
-            color: #388e3c;
-            border: 1px solid #388e3c;
-        }
-
-        .input-field input {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/admin/createVideo.css') }}">
+@endpush
 
     {{-- Exibe mensagens de erro --}}
     @if ($errors->any())
         <div class="message-box error-message">
-            <ul style="list-style: none; padding: 0; margin: 0;">
+            <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -66,7 +25,7 @@
 
     <div class="form-container">
         <div class="custom-form">
-            <form class="col s12" method="post" action="{{ route('admin.cadastro.post') }}">
+            <form class="col s12" method="post" action="{{  route('admin.videos.store') }}">
                 @csrf
                 <!-- Campo Link -->
                 <div class="row">
@@ -84,6 +43,10 @@
                         <label for="title" class="active">Título</label>
                     </div>
                 </div>
+                {{-- @error('slug')
+                    <div class="message-box error-message">
+                        <span>{{ $message }}</span>
+                    </div> --}}
                 <!-- Campo Descrição com textarea -->
                 <div class="row">
                     <div class="input-field col s12">
