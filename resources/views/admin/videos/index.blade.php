@@ -1,15 +1,18 @@
 @extends('layout')
 @section('title', 'Gerenciar Vídeos')
 @section('conteudo')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/admin/indexVideo.css') }}">
+@endpush
 
-    <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+    <div class="container" id="video-container">
         {{-- CABEÇALHO DA PÁGINA --}}
-        <div class="row" style="display: flex; align-items: center; margin-bottom: 20px;">
+        <div class="row">
             <div class="col s8 m10">
-                <h4 style="margin: 0; font-size: 2rem;">Gerenciar Vídeos</h4>
+                <h4>Gerenciar Vídeos</h4>
             </div>
             <div class="col s4 m2 right-align">
-                <span class="chip white-text" style="background-color: #187bcd;">{{ $videos->total() }} vídeos</span>
+                <span class="chip white-text">{{ $videos->total() }} vídeos</span>
             </div>
         </div>
 
@@ -22,29 +25,28 @@
         @endif
 
         {{-- BOTÃO PARA ADICIONAR NOVO VÍDEO --}}
-        <a class="waves-effect waves-light btn modal-trigger" style="background-color: #187bcd; margin-bottom: 20px;"
-            href="{{ route('admin.videos.create') }}">
+        <a id="create-video" class="waves-effect waves-light btn modal-trigger blue" href="{{ route('admin.videos.create') }}">
             <i class="material-icons left">add</i>Adicionar Novo Vídeo
         </a>
 
         {{-- TABELA DE VÍDEOS --}}
-        <table class="striped highlight responsive-table" style="margin-top: 20px;">
+        <table class="striped highlight responsive-table">
             <thead>
                 <tr>
                     <th>Título</th>
                     <th>Usuário</th>
-                    <th class="center-align" style="width: 150px;">Ações</th>
+                    <th id="action-th" class="center-align">Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="responsive-table-body">
                 @forelse ($videos as $video)
                     <tr>
-                        <td style="vertical-align: middle;">{{ $video->title }}</td>
-                        <td style="vertical-align: middle;">{{ $video->user->name }}</td>
-                        <td class="center-align" style="vertical-align: middle;">
+                        <td>{{ $video->title }}</td>
+                        <td>{{ $video->user->name }}</td>
+                        <td class="center-align">
                             <a href="{{ route('admin.videos.edit', $video->id) }}"
-                                class="btn-floating modal-trigger waves-effect waves-light"
-                                style="background-color: #187bcd;"><i class="material-icons">edit</i></a>
+                                class="btn-floating modal-trigger waves-effect waves-light blue">
+                                <i class="material-icons">edit</i></a>
                             <a href="#delete-{{ $video->id }}"
                                 class="btn-floating modal-trigger waves-effect waves-light orange darken-2"><i
                                     class="material-icons">delete</i></a>
@@ -59,7 +61,7 @@
         </table>
 
         {{-- LINKS DE PAGINAÇÃO --}}
-        <div class="center-align" style="margin-top: 20px;">
+        <div class="center-align" id="pagination">
             {{ $videos->links('custom.pagination') }}
         </div>
     </div>
@@ -98,8 +100,7 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-grey btn-flat">Cancelar</a>
-            <button type="submit" form="add-video-form" class="waves-effect waves-light btn"
-                style="background-color: #187bcd;">Salvar</button>
+            <button type="submit" form="add-video-form" class="waves-effect waves-light btn">Salvar</button>
         </div>
     </div>
 
@@ -138,18 +139,5 @@
             });
         </script>
     @endif
-
-    @push('styles')
-        <style>
-            .btn[style*="#187bcd"]:hover {
-                background-color: rgb(20, 103, 175) !important;
-            }
-
-            .modal .modal-content h4,
-            .modal .modal-content label {
-                color: #333;
-            }
-        </style>
-    @endpush
 
 @endsection

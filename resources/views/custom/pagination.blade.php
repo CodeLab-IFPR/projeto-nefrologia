@@ -1,3 +1,7 @@
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/custom/pagination.css') }}">
+@endpush
+
     @if ($paginator->hasPages())
         <ul class="pagination">
             {{-- Previous Page Link --}}
@@ -20,7 +24,7 @@
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
                             <li class="active">
-                                <a style="background-color: #187bcd;">{{ $page }}</a>
+                                <a class="blue">{{ $page }}</a>
                             </li>
                         @else
                             <li class="waves-effect"><a class="page-link" href="{{ $url }}">{{ $page }}</a>

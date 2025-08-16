@@ -9,50 +9,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     @stack('styles')
-
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .content {
-            flex: 1;
-        }
-
-        footer {
-            width: 100%;
-        }
-
-        .nav-option {
-            color: white !important;
-            display: flex !important;
-            padding: 0 1em !important;
-        }
-
-        .sidenav {
-            max-width: 50vw;
-            width: fit-content;
-            height: fit-content;
-            background-color: #ef5350;
-            padding-bottom: 20px;
-        }
-
-        .collapsible-body a {
-            color: black !important;
-            padding: 0.5em 1.5em !important;
-            display: block !important;
-            font: bold !important;
-        }
-    </style>
 </head>
 
 <body>
-    <nav class="#ef5350 red lighten-1">
+    <nav>
         <div class="nav-wrapper container">
             <a href="{{ route('user.index') }}" class="brand-logo center">Projeto nefrologia</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger left">
@@ -83,14 +45,14 @@
 
             <!-- Dropdown Structure -->
             @if (Auth::check())
-                <ul id="dropdown-admin" class="dropdown-content" style="top: 100% !important;">
-                    <li><a href="{{ route('admin.dashboard') }}" style="color: #ef5350;">Dashboard</a></li>
-                    <li><a href="{{ route('admin.videos.index') }}" style="color: #ef5350;">Gerenciar Vídeos</a></li>
-                    <li><a href="{{ route('login.logout') }}" style="color: #ef5350;">Sair</a></li>
+                <ul id="dropdown-admin" class="dropdown-content">
+                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('admin.videos.index') }}">Gerenciar Vídeos</a></li>
+                    <li><a href="{{ route('login.logout') }}">Sair</a></li>
                 </ul>
             @else
-                <ul id="dropdown-admin" class="dropdown-content" style="top: 100% !important;">
-                    <li><a href="{{ route('login.form') }}" style="color: #ef5350;">Logar</a></li>
+                <ul id="dropdown-admin" class="dropdown-content">
+                    <li><a href="{{ route('login.form') }}">Logar</a></li>
                 </ul>
             @endif
         </div>
@@ -115,12 +77,12 @@
         <li>
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header valign-wrapper nav-option">
+                    <div id="dropdown-admin" class="collapsible-header valign-wrapper nav-option">
                         <span class="material-icons">admin_panel_settings</span>Admin
                         <i class="material-icons right">arrow_drop_down</i>
-                    </div>
-                    <div class="collapsible-body">
-                        @if (Auth::check())
+                    </div>                        
+                    <div id="dropdown-admin" class="collapsible-body">
+                            @if (Auth::check())
                             <a href="{{ route('admin.dashboard') }}"> Dashboard</a>
                             <a href="{{ route('admin.videos.index') }}">Gerenciar vídeo</a>
                             <a href="{{ route('login.logout') }}">Sair</a>
@@ -137,10 +99,10 @@
         @yield('conteudo')
     </div>
 
-    <footer class="page-footer #ef5350 red lighten-1" style="padding: 0; margin: 0;">
-        <div style="display: flex; justify-content: center; align-items: center; padding: 8px 0; width: 100%;">
-            <h6 class="white-text" style="margin: 0; font-size: 1rem;">
-                <a href="https://codelabifpr.com.br/" style="color: #FFFFFF"> Desenvolvido por CodeLab – IFPR </a>
+    <footer>
+        <div class="footer">
+            <h6 class="white-text">
+              <a href="https://codelabifpr.com.br/">  Desenvolvido por CodeLab – IFPR </a>
             </h6>
         </div>
     </footer>

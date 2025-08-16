@@ -3,34 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Sua Nova Senha</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        .container {
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .password-box {
-            background-color: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            letter-spacing: 2px;
-            margin: 20px 0;
-        }
-        .warning {
-            font-size: 14px;
-            color: #777;
-        }
-    </style>
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('css/redefinirSenha.css') }}">
+    @endpush
 </head>
 <body>
     <div class="container">
