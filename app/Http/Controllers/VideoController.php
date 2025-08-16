@@ -44,7 +44,7 @@
             ]);
 
             // Extrair o ID do vídeo do link
-            preg_match('/(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|live\/)([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
+            preg_match('/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
             $videoId = $matches[1] ?? null;
 
             if (!$videoId) {
