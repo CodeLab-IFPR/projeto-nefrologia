@@ -20,6 +20,10 @@
 }
 
 /* Botão com ícone menor */
+.custom-form button {
+    background-color: #187bcd;
+}
+
 .custom-form button i.material-icons.right {
     font-size: 16px;
 }
