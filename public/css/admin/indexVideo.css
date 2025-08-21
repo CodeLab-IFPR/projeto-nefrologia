@@ -55,3 +55,10 @@
 .modal .modal-content label {
     color: #333;
 }
+
+@media screen and (max-width: 600px) {
+    #video-count{
+        font-size: 0.8rem;
+    }
+    
+}
