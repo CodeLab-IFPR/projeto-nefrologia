@@ -16,7 +16,7 @@
 <body>
     <nav>
         <div class="nav-wrapper container">
-            <a href="{{ route('user.index') }}" class="brand-logo center">Projeto nefrologia</a>
+            <a href="{{ route('user.index') }}" class="brand-logo center">ConectaRim</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger left">
                 <i class="material-icons">menu</i>
             </a>
