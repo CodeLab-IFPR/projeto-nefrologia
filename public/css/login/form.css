@@ -1,51 +1,119 @@
-.form-container {
+.login-wrapper {
     display: flex;
     justify-content: center;
-    margin: 40px auto;
+    align-items: center;
+    min-height: 100%;
+    padding: 15px;
 }
 
-/* Formulário com container menor */
-.custom-form {
-    background-color: #f5f5f5;
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.login-card {
+    background: #fff;
     width: 100%;
     max-width: 400px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* Ícones menores */
-.custom-form i.material-icons.prefix {
-    font-size: 16px;
+.login-title {
+    font-size: 1.8rem;
+    margin: 0px;
+    color: rgb(24, 123, 205);
+    font-weight: bold;
 }
 
-/* Botão com ícone menor */
-.custom-form button {
-    background-color: #187bcd;
-}
-
-.custom-form button i.material-icons.right {
-    font-size: 16px;
-}
-
-/* Mensagens de erro */
-.error-message {
-    background-color: #ffebee;
-    color: #c62828;
-    padding: 8px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-
-.RecuperarSenha {
-    display: flex;
-    height: 25px;
-    flex-direction: row-reverse;
+.login-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 5px;
     margin-bottom: 20px;
 }
 
-.status-message {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+.form-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #444;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: border 0.2s;
+}
+
+.alert {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-align: left;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.forgot-password {
+    text-align: center;
+}
+
+.forgot-password a {
+    font-size: 0.9rem;
+    color: #dc3545;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.form-actions {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.btn {
+    display: inline-flex;
+    text-transform: none;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: rgb(24, 123, 205);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: rgb(20, 103, 175);
 }
