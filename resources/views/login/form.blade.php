@@ -5,60 +5,52 @@
     <link rel="stylesheet" href="{{ asset('css/login/form.css') }}">
 @endpush
 
-    <div class="form-container">
-        <div class="custom-form">
-            <!-- Mensagens de Erro / Sessão -->
+    <div class="login-wrapper">
+        <div class="login-card">
+            <h2 class="login-title">Painel Administrativo</h2>
+            <p class="login-subtitle">Faça login para continuar</p>
+
             @if ($mensagem = Session::get('erro'))
-                <div class="error-message">
+                <div class="alert alert-error">
                     {{ $mensagem }}
                 </div>
             @endif
             @if ($errors->any())
                 @foreach ($errors->all() as $erro)
-                    <div class="error-message">
+                    <div class="alert alert-error">
                         {{ $erro }}
                     </div>
                 @endforeach
             @endif
             @if (session('status'))
-                <div class="status-message card-panel green lighten-4 green-text text-darken-4">
+                <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
             @endif
 
             <form action="{{ route('login.auth') }}" method="POST">
                 @csrf
-                <!-- Campo Login -->
-                <div class="row ">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">person</i>
-                        <input id="email" type="email" name="email" class="validate" placeholder="Insira seu Email"
-                            required>
-                        <label for="email">Email</label>
-                    </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" placeholder="Digite seu e-mail"
+                        value="{{ old('email') }}" required>
                 </div>
-                <!-- Campo Senha -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">lock</i>
-                        <input id="password" type="password" name="password" class="validate"
-                            placeholder="Insira sua senha" required>
-                        <label for="password">Senha</label>
-                    </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
                 </div>
-                <div class="RecuperarSenha">
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+
+                <div class="forgot-password">
                     <a href="{{ route('password.request') }}">Esqueci minha senha</a>
-                </div>
-                <!-- Botão Enviar -->
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button class="btn" type="submit" name="action">
-                            Entrar
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
                 </div>
             </form>
         </div>
     </div>
+
 @endsection
