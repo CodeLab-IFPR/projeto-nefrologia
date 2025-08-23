@@ -16,9 +16,17 @@ class SiteController extends Controller
     }
 
     public function details($slug)
-    {
-        $video = Video::where('slug', $slug)->first();
+{
+    $video = Video::where('slug', $slug)->firstOrFail();
 
-        return view('video.details', compact('video'));
-    }
+    $previousVideo = Video::where('id', '<', $video->id)
+        ->orderBy('id', 'desc')
+        ->first();
+
+    $nextVideo = Video::where('id', '>', $video->id)
+        ->orderBy('id', 'asc')
+        ->first();
+
+    return view('video.details', compact('video', 'previousVideo', 'nextVideo'));
+}
 }
