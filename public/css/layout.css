@@ -8,7 +8,7 @@ body {
 }
 
 nav {
-    background-color: #ef5350;
+    background-color: #187bcd;
 }
 
 .content {
@@ -17,7 +17,7 @@ nav {
 
 footer {
     width: 100%;
-    background-color: #ef5350;
+    background-color: #187bcd;
 }
 
 .footer {
@@ -47,7 +47,7 @@ footer {
     max-width: 50vw;
     width: fit-content;
     height: fit-content;
-    background-color: #ef5350;
+    background-color: #187bcd;
     padding-bottom: 20px;
 }
 
@@ -62,5 +62,5 @@ footer {
 }
 
 #dropdown-admin a{
-    color: #ef5350;
+    color: #187bcd;
 }

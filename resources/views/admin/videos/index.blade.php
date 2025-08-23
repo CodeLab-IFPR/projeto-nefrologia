@@ -12,7 +12,7 @@
                 <h4>Gerenciar Vídeos</h4>
             </div>
             <div class="col s4 m2 right-align">
-                <span class="chip white-text">{{ $videos->total() }} vídeos</span>
+                <span id="video-count" class="chip white-text">{{ $videos->total() }} vídeos</span>
             </div>
         </div>
 
@@ -30,9 +30,10 @@
         </a>
 
         {{-- TABELA DE VÍDEOS --}}
-        <table class="striped highlight responsive-table">
-            <thead>
-                <tr>
+        <div class="responsive-table">
+            <table class="striped highlight table">
+                <thead>
+                    <tr>
                     <th>Título</th>
                     <th>Usuário</th>
                     <th id="action-th" class="center-align">Ações</th>
@@ -40,32 +41,33 @@
             </thead>
             <tbody class="responsive-table-body">
                 @forelse ($videos as $video)
-                    <tr>
-                        <td>{{ $video->title }}</td>
-                        <td>{{ $video->user->name }}</td>
+                <tr>
+                    <td>{{ $video->title }}</td>
+                    <td>{{ $video->user->name }}</td>
                         <td class="center-align">
                             <a href="{{ route('admin.videos.edit', $video->id) }}"
                                 class="btn-floating modal-trigger waves-effect waves-light blue">
                                 <i class="material-icons">edit</i></a>
-                            <a href="#delete-{{ $video->id }}"
+                                <a href="#delete-{{ $video->id }}"
                                 class="btn-floating modal-trigger waves-effect waves-light orange darken-2"><i
-                                    class="material-icons">delete</i></a>
+                                class="material-icons">delete</i></a>
                         </td>
                     </tr>
-                @empty
+                    @empty
                     <tr>
                         <td colspan="3">Nenhum vídeo cadastrado.</td>
                     </tr>
-                @endforelse
-            </tbody>
-        </table>
-
-        {{-- LINKS DE PAGINAÇÃO --}}
-        <div class="center-align" id="pagination">
-            {{ $videos->links('custom.pagination') }}
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-    </div>
-
+            
+            {{-- LINKS DE PAGINAÇÃO --}}
+            <div class="center-align" id="pagination">
+                {{ $videos->links('custom.pagination') }}
+            </div>
+        </div>
+        
 
     {{-- ================================================= --}}
     {{-- MODAIS --}}
