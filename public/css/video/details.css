@@ -6,14 +6,14 @@
     margin: 0px auto;
     padding: 15px;
     font-family: Arial, sans-serif;
-    color: #333;
+    color: var(--font-dark-color);
     text-align: center;
 }
 
 .video-title {
     font-size: 2rem;
     font-weight: bold;
-    color: #1e3a8a;
+    color: var(--main-color-dark);
     margin-top: 0px;
     margin-bottom: 20px;
     text-align: left;
@@ -40,7 +40,7 @@
 
 .video-description {
     font-size: 1rem;
-    color: #555;
+    color: var(--font-gray-color);
     text-align: left;
 }
 
@@ -60,12 +60,12 @@
     text-decoration: none;
     border-radius: 6px;
     transition: all 0.3s ease-in-out;
-    background: rgb(24, 123, 205);
-    color: #fff;
+    background-color: var(--main-color);
+    color: var(--font-white-color);
 }
 
 .btn-nav:hover {
-    background: rgb(20, 103, 175);
+    background-color: var(--main-color-hover);
 }
 
 .btn-prev .icon {
@@ -77,8 +77,8 @@
 }
 
 .btn-nav.disabled {
-    background: #ccc;
-    color: #666;
+    background-color: var(--button-bg-color-disable);
+    color: var(--font-gray-color);
     cursor: not-allowed;
     pointer-events: none;
     user-select: none;

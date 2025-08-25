@@ -1,7 +1,9 @@
+@import url('../variables.css');
+
 .error-box {
-    background-color: #ffebee;
+    background-color: var(--message-color);
     /* Fundo vermelho bem claro */
-    border: 1px solid #d32f2f;
+    border: 1px solid var(--error-color);
     /* Borda vermelha */
     border-radius: 5px;
     padding: 15px;
@@ -36,5 +38,5 @@
 }
 
 .form-footer button {
-    background-color: #187bcd;
+    background-color: var(--main-color);
 }
