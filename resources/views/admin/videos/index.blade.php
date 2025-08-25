@@ -12,7 +12,7 @@
                 <h4>Gerenciar Vídeos</h4>
             </div>
             <div class="col s4 m2 right-align">
-                <span id="video-count" class="chip white-text">{{ $videos->total() }} vídeos</span>
+                <span id="video-count" class="chip blue white-text">{{ $videos->total() }} vídeos</span>
             </div>
         </div>
 

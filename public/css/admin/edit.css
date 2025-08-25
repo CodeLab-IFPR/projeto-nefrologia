@@ -1,3 +1,5 @@
+@import url('../variables.css');
+
 .change-password-wrapper {
     display: flex;
     align-items: center;
@@ -7,7 +9,7 @@
 }
 
 .form-container {
-    background-color: #ffffff;
+    background-color: var(--container-bg-color);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -17,7 +19,7 @@
 }
 
 .form-container h2 {
-    color: rgb(24, 123, 205);
+    color: var(--main-color);
     margin-top: 0;
     margin-bottom: 30px;
     font-size: 24px;
@@ -32,14 +34,14 @@
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #495057;
+    color: var(--font-dark-color);
     font-weight: 500;
 }
 
 .form-group input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--input-color);
     border-radius: 8px;
     box-sizing: border-box;
     font-size: 16px;
@@ -47,15 +49,15 @@
 
 .form-group input:focus {
     outline: none;
-    border-color: #80bdff;
+    border-color: var(--input-color-focus);
     box-shadow: 0 0 0 3px rgb(20, 103, 175);
 }
 
 .btn-submit {
     width: 100%;
     padding: 12px;
-    background-color: rgb(24, 123, 205);
-    color: white;
+    background-color: var(--main-color);
+    color: var(--font-white-color);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -65,7 +67,7 @@
 }
 
 .btn-submit:hover {
-    background-color: rgb(20, 103, 175);
+    background-color: var(--main-color-hover);
 }
 
 .status-message {
@@ -77,22 +79,22 @@
 }
 
 .status-message.success {
-    background-color: #d1e7dd;
-    color: #0f5132;
+    background-color: var(--message-color);
+    color: var(--success-color);
 }
 
 .status-message.error {
-    background-color: #f8d7da;
-    color: #842029;
+    background-color: var(--message-color);
+    color: var(--error-color);
 }
 
 .validation-error {
-    color: #dc3545;
+    color: var(--error-color);
     font-size: 0.875em;
     display: block;
     margin-top: 5px;
 }
 
 body {
-    background-color: #f8f9fa;
+    background-color: var(--bg-color);
 }
