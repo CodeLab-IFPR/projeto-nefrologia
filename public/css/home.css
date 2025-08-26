@@ -1,3 +1,5 @@
+@import url('variables.css');
+
 #video {
     margin-bottom: 40px;
 }
@@ -44,7 +46,7 @@
 }
 
 .video-titulo {
-    color: #1465c0;
+    color: var(--main-color);
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 6px;
@@ -60,7 +62,7 @@
 .video-desc {
     font-size: 14px;
     line-height: 1.4;
-    color: #555;
+    color: var(--font-dark-color);
     overflow: hidden;
 }
 

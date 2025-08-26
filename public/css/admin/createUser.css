@@ -1,5 +1,7 @@
+@import url('../variables.css');
+
 body {
-    background-color: #f8f9fa;
+    background-color: var(--bg-color);
 }
 
 .user-create-wrapper {
@@ -11,7 +13,7 @@ body {
 }
 
 .form-container {
-    background-color: #ffffff;
+    background-color: var(--container-bg-color);
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -20,7 +22,7 @@ body {
 }
 
 .form-container h2 {
-    color: rgb(24, 123, 205);
+    color: var(--main-color);
     margin-top: 0;
     margin-bottom: 30px;
     font-size: 24px;
@@ -36,14 +38,14 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #495057;
+    color: var(--font-dark-color);
     font-weight: 500;
 }
 
 .form-group input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--input-color);
     border-radius: 8px;
     box-sizing: border-box;
     font-size: 16px;
@@ -72,25 +74,25 @@ body {
 }
 
 .btn-primary {
-    background-color: rgb(24, 123, 205);
-    color: white;
+    background-color: var(--main-color);
+    color: var(--font-white-color);
 }
 
 .btn-primary:hover {
-    background-color: rgb(20, 103, 175);
+    background-color: var(--main-color-hover);
 }
 
 .btn-secondary {
-    background-color: #e9ecef;
-    color: #495057;
+    background-color: var(--button-bg-color);
+    color: var(--font-dark-color);
 }
 
 .btn-secondary:hover {
-    background-color: #d6dbe0;
+    background-color: var(--button-bg-color-hover);
 }
 
 .validation-error {
-    color: #dc3545;
+    color: var(--error-color);
     font-size: 0.875em;
     display: block;
     margin-top: 5px;
