@@ -16,4 +16,5 @@
     --message-color: #d4edda;
     --error-color: #dc3545;
     --success-color: #388e3c;
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
