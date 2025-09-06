@@ -44,7 +44,7 @@
             ]);
 
             // Extrair o ID do vídeo do link
-            preg_match('/(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|live\/)([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
+            preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
             $videoId = $matches[1] ?? null;
 
             if (!$videoId) {
@@ -87,7 +87,7 @@
         public function update(Request $request, string $id)
         {
             $slug = Str::slug($request->input('title'), '-');
-            $request->merge(['slug' => $slug]); // 
+            $request->merge(['slug' => $slug]); //
             $request->validate(
                 [
                     'title' => 'required|string|max:255',
@@ -112,7 +112,7 @@
                 $thumbnail = $video->thumbnail;
             } else {
                 // Extrair o ID do novo vídeo do link
-                preg_match('/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
+                preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
                 $videoId = $matches[1] ?? null;
 
                 if (!$videoId) {
