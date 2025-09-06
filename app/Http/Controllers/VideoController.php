@@ -34,23 +34,24 @@
             $slug = Str::slug($request->input('title'), '-');
             $request->merge(['slug' => $slug]);
             $request->validate([
-                'link' => 'required',
+                'link' => 'required|url',
                 'title' => 'required|string|max:255',
                 'description' => 'required|string',
                 'slug' => 'required|unique:videos,slug',
 
             ], [
+                'link.required' => 'O link do vídeo é obrigatório.',
+                'link.url' => 'O link fornecido não é um URL válido.',
                 'slug.unique' => 'Já existe um vídeo com este título.',
             ]);
 
             // Extrair o ID do vídeo do link
-            preg_match('/(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|live\/)([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
+            preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
             $videoId = $matches[1] ?? null;
 
             if (!$videoId) {
-                return redirect()->back()->with('error', 'Link inválido!');
+                return redirect()->back()->with('error', 'O link fornecido não é um vídeo do YouTube válido.');
             }
-
             // Salvar no banco
             Video::create([
                 'link' => "https://www.youtube.com/embed/{$videoId}", // Link formatado para o iframe
@@ -87,7 +88,7 @@
         public function update(Request $request, string $id)
         {
             $slug = Str::slug($request->input('title'), '-');
-            $request->merge(['slug' => $slug]); // 
+            $request->merge(['slug' => $slug]); //
             $request->validate(
                 [
                     'title' => 'required|string|max:255',
@@ -99,7 +100,8 @@
                 ],
                 [
                     'title.required' => 'O título é obrigatório.',
-                    'title.unique' => 'Já existe um vídeo com este título.',
+                    'link.required' => 'O link do vídeo é obrigatório.',
+                    'link.url' => 'O link fornecido não é um URL válido.',
                     'slug.unique' => 'Já existe um vídeo com este título.',
                 ]
             );
@@ -112,11 +114,10 @@
                 $thumbnail = $video->thumbnail;
             } else {
                 // Extrair o ID do novo vídeo do link
-                preg_match('/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
+                preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/', $request->get('link'), $matches);
                 $videoId = $matches[1] ?? null;
-
                 if (!$videoId) {
-                    return back()->with('error', 'Link inválido!');
+                    return back()->with('error', 'O link fornecido não é um vídeo do YouTube válido.');
                 }
 
                 $link = "https://www.youtube.com/embed/{$videoId}";
