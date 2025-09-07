@@ -34,7 +34,31 @@
             </div>
         </div>
     @endif
+    {{-- Exibe mensagens de sucesso ou erro da sessão --}}
+    {{-- Exibe mensagens de sucesso ou erro da sessão --}}
+    @if (session('success'))
+        <div class="success-container">
+            <div class="success-box">
+                <div class="success-header">
+                    <i class="material-icons">check_circle</i>
+                    <span>Sucesso</span>
+                </div>
+                <p>{{ session('success') }}</p>
+            </div>
+        </div>
+    @endif
 
+    @if (session('error'))
+        <div class="error-container">
+            <div class="error-box">
+                <div class="error-header">
+                    <i class="material-icons">error</i>
+                    <span>Erro de Validação</span>
+                </div>
+                <p>{{ session('error') }}</p>
+            </div>
+        </div>
+    @endif
     {{-- Formulário de Edição Modernizado --}}
     <div class="form-container">
         <form action="{{ route('admin.videos.update', $video->id) }}" method="POST" id="edit-video-form">
@@ -50,11 +74,11 @@
                 <div class="form-group">
                     <label for="title" class="form-label">Título do Vídeo</label>
                     <div class="input-wrapper">
-                        <input 
-                            id="title" 
-                            type="text" 
-                            name="title" 
-                            value="{{ old('title', $video->title) }}" 
+                        <input
+                            id="title"
+                            type="text"
+                            name="title"
+                            value="{{ old('title', $video->title) }}"
                             required
                             class="form-input"
                             placeholder="Digite o título do vídeo"
@@ -69,11 +93,11 @@
                             // Converte o link 'embed' de volta para o link 'watch' para facilitar a edição
                             $youtube_watch_url = str_replace('embed/', 'watch?v=', $video->link);
                         @endphp
-                        <input 
-                            id="link" 
-                            type="url" 
-                            name="link" 
-                            value="{{ old('link', $youtube_watch_url) }}" 
+                        <input
+                            id="link"
+                            type="url"
+                            name="link"
+                            value="{{ old('link', $youtube_watch_url) }}"
                             required
                             class="form-input"
                             placeholder="https://www.youtube.com/watch?v=..."
@@ -88,9 +112,9 @@
                 <div class="form-group">
                     <label for="description" class="form-label">Descrição</label>
                     <div class="textarea-wrapper">
-                        <textarea 
-                            id="description" 
-                            name="description" 
+                        <textarea
+                            id="description"
+                            name="description"
                             class="form-textarea"
                             placeholder="Descreva o conteúdo do vídeo..."
                             rows="4"
