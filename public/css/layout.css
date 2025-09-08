@@ -1,3 +1,5 @@
+@import url('variables.css');
+
 html,
 body {
     height: 100%;
@@ -8,7 +10,7 @@ body {
 }
 
 nav {
-    background-color: #187bcd;
+    background-color: var(--main-color);
 }
 
 .content {
@@ -17,7 +19,7 @@ nav {
 
 footer {
     width: 100%;
-    background-color: #187bcd;
+    background-color: var(--main-color);
 }
 
 .footer {
@@ -34,11 +36,11 @@ footer {
 }
 
 .footer a{
-    color: #FFFFFF
+    color: var(--font-white-color);
 }
 
 .nav-option {
-    color: white !important;
+    color: var(--font-white-color) !important;
     display: flex !important;
     padding: 0 1em !important;
 }
@@ -47,7 +49,7 @@ footer {
     max-width: 50vw;
     width: fit-content;
     height: fit-content;
-    background-color: #187bcd;
+    background-color: var(--main-color);
     padding-bottom: 20px;
 }
 
@@ -62,5 +64,5 @@ footer {
 }
 
 #dropdown-admin a{
-    color: #187bcd;
+    color: var(--main-color);
 }

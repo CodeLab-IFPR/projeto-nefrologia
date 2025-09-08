@@ -22,6 +22,12 @@
             {{ session('success') }}
         </div>
     @endif
+{{-- Exibe mensagem de erro da sessão --}}
+@if (session('error'))
+    <div class="message-box error-message">
+        {{ session('error') }}
+    </div>
+@endif
 
     <div class="form-container">
         <div class="custom-form">

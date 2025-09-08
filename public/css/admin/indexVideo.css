@@ -1,3 +1,5 @@
+@import url('../variables.css');
+
 #video-container {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -13,17 +15,13 @@
 }
 
 .blue{
-    background-color: #187bcd;
+    background-color: var(--main-color);
 }
 
 .row {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.chip {
-    background-color: #187bcd;
 }
 
 .responsive-table {
@@ -39,7 +37,7 @@
 }
 
 .responsive-table-body a{
-    background-color: #187bcd;
+    background-color: var(--main-color);
 }
 
 #pagination {
@@ -48,12 +46,12 @@
 }
 
 .modal-footer button {
-    background-color: #187bcd;
+    background-color: var(--main-color);
 }
 
 .modal .modal-content h4,
 .modal .modal-content label {
-    color: #333;
+    color: var(--font-dark-color);
 }
 
 @media screen and (max-width: 425px) {

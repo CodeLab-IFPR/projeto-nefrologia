@@ -1,3 +1,5 @@
+@import url('../variables.css');
+
 .panel-wrapper {
     padding: 40px 0;
     /* Espaçamento no topo e na base */
@@ -9,8 +11,8 @@
 
 .panel-card {
     /* Estrutura do card */
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--container-bg-color);
+    border: 1px solid var(--container-border-color);
     border-radius: 8px;
     padding: 25px;
     text-align: center;
@@ -21,7 +23,7 @@
     align-items: center;
     min-height: 180px;
     /* Altura mínima para todos os cards */
-    color: #333;
+    color: var(--font-dark-color);
     /* Cor do texto padrão */
 }
 
@@ -30,7 +32,7 @@
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     text-decoration: none;
-    color: rgb(20, 103, 175);
+    color: var(--main-color-hover);
 
 }
 
@@ -38,7 +40,7 @@
 .panel-card i.material-icons {
     font-size: 4rem;
     /* Tamanho grande para o ícone */
-    color: #187bcd;
+    color: var(--main-color);
     margin-bottom: 15px;
 }
 

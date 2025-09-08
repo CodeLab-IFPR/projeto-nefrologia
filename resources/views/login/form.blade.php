@@ -39,7 +39,12 @@
 
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                    <div class="password-input">
+                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                        <button type="button" id="togglePassword">
+                            <span class="material-icons">visibility</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -52,5 +57,20 @@
             </form>
         </div>
     </div>
+    
+    <script>
+        document.getElementById('togglePassword').addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            const input = document.getElementById('password');
+            const icon = this.querySelector('.material-icons');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+    </script>
 
 @endsection
