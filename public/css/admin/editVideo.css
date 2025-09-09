@@ -57,6 +57,7 @@
 }
 
 .error-box {
+    background-color: var(--message-color);
     border: 1px solid var(--error-color);
     border-radius: 8px;
     padding: 16px;
