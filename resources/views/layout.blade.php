@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="valign-wrapper nav-option">
+                    <a href="{{ route('videos.index') }}" class="valign-wrapper nav-option">
                         <span class="material-icons">play_arrow</span>Vídeos
                     </a>
                 </li>
@@ -70,7 +70,7 @@
             </a>
         </li>
         <li>
-            <a href="" class="valign-wrapper nav-option">
+            <a href="{{ route('videos.index') }}" class="valign-wrapper nav-option">
                 <span class="material-icons">play_arrow</span>Vídeos
             </a>
         </li>

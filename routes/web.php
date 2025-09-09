@@ -14,6 +14,7 @@ Route::redirect('/sobre', 'about');
 // Rotas do SiteController
 Route::resource('home', SiteController::class);
 Route::get('/', [SiteController::class, 'index'])->name('user.index');
+Route::get('/videos', [SiteController::class, 'videos'])->name('videos.index');
 Route::get('/video/{slug}', [SiteController::class, 'details'])->name('video.details');
 
 // Rotas de login
