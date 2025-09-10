@@ -66,3 +66,21 @@ footer {
 #dropdown-admin a{
     color: var(--main-color);
 }
+
+.container {
+    max-width: 1250px !important; /* Aumenta de ~1200px para 1400px */
+    width: 100% !important;
+    padding: 0 20px !important;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px !important;
+    }
+}
