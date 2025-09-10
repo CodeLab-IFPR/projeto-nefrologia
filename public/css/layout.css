@@ -68,7 +68,7 @@ footer {
 }
 
 .container {
-    max-width: 1250px !important; /* Aumenta de ~1200px para 1400px */
+    max-width: 1255px !important;
     width: 100% !important;
     padding: 0 20px !important;
 }
