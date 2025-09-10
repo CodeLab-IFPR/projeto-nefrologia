@@ -36,13 +36,15 @@
             $request->validate([
                 'link' => 'required|url',
                 'title' => 'required|string|max:255',
-                'description' => 'required|string',
+                'description' => 'nullable|string',
                 'slug' => 'required|unique:videos,slug',
 
             ], [
                 'link.required' => 'O link do vídeo é obrigatório.',
                 'link.url' => 'O link fornecido não é um URL válido.',
                 'slug.unique' => 'Já existe um vídeo com este título.',
+                'slug.required' => '',
+                'title.required' => 'O título é obrigatório.',
             ]);
 
             // Extrair o ID do vídeo do link
