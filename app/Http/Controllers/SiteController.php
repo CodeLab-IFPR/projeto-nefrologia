@@ -9,8 +9,10 @@ class SiteController extends Controller
 {
     public function index()
     {
-        // return 'index';
-        return view('home');
+        $totalVideos = Video::count();
+        $nearestMultipleOfFive = floor($totalVideos / 5) * 5;
+        $showcaseVideo = Video::where('is_showcase', true)->first();
+        return view('home', compact('showcaseVideo', 'nearestMultipleOfFive'));
     }
 
     public function videos()

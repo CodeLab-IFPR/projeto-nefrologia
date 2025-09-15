@@ -51,6 +51,14 @@
                                 <a href="#delete-{{ $video->id }}"
                                 class="btn-floating modal-trigger waves-effect waves-light orange darken-2"><i
                                 class="material-icons">delete</i></a>
+                                
+                                <form action="{{ route('admin.videos.showcase', $video->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <button type="submit" class="btn-floating waves-effect waves-light {{ $video->is_showcase ? 'yellow darken-2' : 'green' }}">
+                                        <i class="material-icons">star</i>
+                                    </button>
+                                </form>
+                            
                         </td>
                     </tr>
                     @empty
