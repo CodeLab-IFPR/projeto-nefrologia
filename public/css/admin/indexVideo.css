@@ -64,3 +64,28 @@
     }
 
 }
+
+@media screen and (max-width: 600px) {
+    #showcase-{{ $video->id }}.modal {
+        width: 95% !important;
+        max-height: 90% !important;
+    }
+
+    #showcase-{{ $video->id }}.modal .modal-content h5 {
+        font-size: 1.2rem;
+    }
+
+    #showcase-{{ $video->id }}.modal .modal-content p {
+        font-size: 0.9rem;
+    }
+
+    #showcase-{{ $video->id }}.modal .modal-footer {
+        padding: 4px 15px 15px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 992px) {
+    #showcase-{{ $video->id }}.modal {
+        width: 80% !important;
+    }
+}
