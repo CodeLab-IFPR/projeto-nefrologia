@@ -131,6 +131,7 @@
             M.Modal.init(elems);
         });
     </script>
+    @stack('scripts')
 </body>
 
 </html>

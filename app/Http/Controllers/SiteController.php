@@ -12,7 +12,8 @@ class SiteController extends Controller
         $totalVideos = Video::count();
         $nearestMultipleOfFive = floor($totalVideos / 5) * 5;
         $showcaseVideo = Video::where('is_showcase', true)->first();
-        return view('home', compact('showcaseVideo', 'nearestMultipleOfFive'));
+        $videos = Video::orderBy('id', 'asc')->get();
+        return view('home', compact('showcaseVideo', 'nearestMultipleOfFive', 'videos'));
     }
 
     public function videos()
