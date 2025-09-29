@@ -1,4 +1,4 @@
-:root{
+:root {
     --bg-color: #f8f9fa;
     --container-bg-color: #ffffff;
     --container-border-color: #e0e0e0;
@@ -6,7 +6,7 @@
     --main-color-dark: #1e3a8a;
     --main-color-hover: #1467af;
     --button-bg-color: #e9ecef;
-    --button-bg-color-disable: #ccc; 
+    --button-bg-color-disable: #ccc;
     --button-bg-color-hover: #d6dbe0;
     --font-dark-color: #495057;
     --font-gray-color: #777;

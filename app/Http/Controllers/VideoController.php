@@ -148,4 +148,14 @@
             $video->delete();
             return redirect()->route('admin.videos.index')->with('success', 'Vídeo deletado com sucesso!');
         }
+
+        public function setShowcase(Video $video)
+        {
+            Video::where('is_showcase', true)->update(['is_showcase' => false]);
+
+            $video->is_showcase = true;
+            $video->save();
+
+            return redirect()->back()->with('success', "Vídeo '{$video->title}' definido como destaque!");
+        }
     }
