@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Editar Vídeo')
+@section('title', 'Cadastrar Vídeo')
 @section('conteudo')
 
 @include('admin.videos.form', [
