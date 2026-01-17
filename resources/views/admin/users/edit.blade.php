@@ -28,10 +28,25 @@
                     <span class="validation-error">{{ $message }}</span>
                     @enderror
                 </div>
-
+                @if(Auth::id() !== $user->id)
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="can_manage_users" value="1" {{ old('can_manage_users', $user->can_manage_users) ? 'checked' : '' }}>
+                            <span>Pode gerenciar usuários</span>
+                        </label>
+                        @error('can_manage_users')
+                        <span class="validation-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" placeholder="Deixe em branco para não alterar">
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" placeholder="Deixe em branco para não alterar">
+                        <button type="button" id="togglePassword">
+                            <span class="material-icons">visibility</span>
+                        </button>
+                    </div>
                     @error('password')
                     <span class="validation-error">{{ $message }}</span>
                     @enderror
@@ -39,8 +54,13 @@
 
                 <div class="form-group">
                     <label for="password_confirmation">Confirmar senha</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation"
-                           placeholder="Repita a senha apenas se for alterar">
+                    <div class="password-input">
+                        <input type="password" id="password_confirmation" name="password_confirmation"
+                               placeholder="Repita a senha apenas se for alterar">
+                        <button type="button" id="togglePasswordConfirmation">
+                            <span class="material-icons">visibility</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -52,3 +72,32 @@
     </div>
 
 @endsection
+@push('scripts')
+<script>
+    document.getElementById('togglePassword').addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        const input = document.getElementById('password');
+        const icon = this.querySelector('.material-icons');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            icon.textContent = 'visibility';
+        }
+    });
+
+    document.getElementById('togglePasswordConfirmation').addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        const input = document.getElementById('password_confirmation');
+        const icon = this.querySelector('.material-icons');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            icon.textContent = 'visibility';
+        }
+    });
+</script>
+@endpush

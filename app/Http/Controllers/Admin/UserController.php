@@ -56,6 +56,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'can_manage_users' => $request->has('can_manage_users') ? 1 : 0,
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'Usuário criado com sucesso!');    }
@@ -97,6 +98,11 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+
+        // Só permite alterar can_manage_users se não for o próprio usuário
+        if (auth()->id() !== $user->id) {
+            $user->can_manage_users = $request->has('can_manage_users') ? 1 : 0;
+        }
 
         // Só atualiza a senha se o usuário preencher o campo
         if ($request->filled('password')) {

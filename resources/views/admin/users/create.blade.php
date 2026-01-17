@@ -29,27 +29,75 @@
                         <span class="validation-error">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="can_manage_users" value="1" {{ old('can_manage_users') ? 'checked' : '' }}>
+                        <span>Pode gerenciar usuários</span>
+                    </label>
+                    @error('can_manage_users')
+                    <span class="validation-error">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" placeholder="Crie uma senha" required>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" placeholder="Crie uma senha" required>
+                        <button type="button" id="togglePassword">
+                            <span class="material-icons">visibility</span>
+                        </button>
+                    </div>
                     @error('password')
-                        <span class="validation-error">{{ $message }}</span>
+                    <span class="validation-error">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="password_confirmation">Confirmar senha</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation"
-                        placeholder="Repita a senha" required>
+                    <div class="password-input">
+                        <input type="password" id="password_confirmation" name="password_confirmation"
+                               placeholder="Repita a senha" required>
+                        <button type="button" id="togglePasswordConfirmation">
+                            <span class="material-icons">visibility</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Cancelar</a>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
 
 @endsection
+@push('scripts')
+<script>
+    document.getElementById('togglePassword').addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        const input = document.getElementById('password');
+        const icon = this.querySelector('.material-icons');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            icon.textContent = 'visibility';
+        }
+    });
+
+    document.getElementById('togglePasswordConfirmation').addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        const input = document.getElementById('password_confirmation');
+        const icon = this.querySelector('.material-icons');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            icon.textContent = 'visibility';
+        }
+    });
+</script>
+@endpush

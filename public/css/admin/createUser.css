@@ -50,6 +50,17 @@ body {
     box-sizing: border-box;
     font-size: 16px;
 }
+.form-group label input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    padding: 0;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
 
 .form-actions {
     display: flex;
@@ -96,4 +107,18 @@ body {
     font-size: 0.875em;
     display: block;
     margin-top: 5px;
+}
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
 }

@@ -1,0 +1,85 @@
+@import url('../variables.css');
+
+#user-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#user-container h4 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+#create-user {
+    margin-bottom: 20px;
+}
+
+.blue {
+    background-color: var(--main-color);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.responsive-table {
+    margin-top: 20px;
+}
+
+#action-th {
+    width: 150px;
+}
+
+.responsive-table-body td {
+    vertical-align: middle;
+}
+
+.responsive-table-body a {
+    background-color: var(--main-color);
+}
+
+.modal-footer button {
+    background-color: var(--main-color);
+}
+
+.modal .modal-content h4,
+.modal .modal-content label {
+    color: var(--font-dark-color);
+}
+
+@media screen and (max-width: 425px) {
+    #user-count {
+        font-size: 0.8rem;
+    }
+
+    #create-user {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .modal {
+        width: 95% !important;
+        max-height: 90% !important;
+    }
+
+    .modal .modal-content h5 {
+        font-size: 1.2rem;
+    }
+
+    .modal .modal-content p {
+        font-size: 0.9rem;
+    }
+
+    .modal .modal-footer {
+        padding: 4px 15px 15px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 992px) {
+    .modal {
+        width: 80% !important;
+    }
+}
