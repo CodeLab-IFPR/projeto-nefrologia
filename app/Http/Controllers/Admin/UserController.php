@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -51,9 +52,11 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Usuário criado com sucesso!');
-    }
+        return redirect()->route('admin.users.index')->with('success', 'Usuário criado com sucesso!');    }
 
+    /**
+     * Display the specified resource.
+     */
     /**
      * Display the specified resource.
      */
@@ -67,7 +70,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -75,7 +78,28 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|confirmed|min:8',
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'email.unique' => 'Este email já está em uso por outro usuário.',
+            'password.confirmed' => 'A confirmação da senha não corresponde.',
+            'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // Só atualiza a senha se o usuário preencher o campo
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.users.index')->with('success', 'Usuário atualizado com sucesso!');
     }
 
     /**
@@ -83,6 +107,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->update(['deleted_by' => auth()->id()]);
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'Usuário removido com sucesso!');
     }
 }
