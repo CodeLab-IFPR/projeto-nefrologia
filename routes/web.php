@@ -41,8 +41,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('/seguranca', [AdminController::class, 'updatePassword'])->name('seguranca.update');
 
     // Definir Vídeo de destaque
-    Route::post('/admin/videos/{video}/showcase', [VideoController::class, 'setShowcase'])->name('videos.showcase');
-
+    Route::post('videos/{video}/showcase', [VideoController::class, 'setShowcase'])->name('videos.showcase');
     // Rotas para o vídeo, CRUD completo
     Route::resource('videos', VideoController::class);
 
