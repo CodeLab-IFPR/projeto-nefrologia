@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Vídeo')
+@section('description', $video->title . ': ' . Str::limit($video->description, 150))
 @section('conteudo')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/video/details.css') }}">
@@ -11,12 +12,12 @@
     </div>
 
     <div class="video-wrapper">
-        <iframe id="video-iframe" 
-            src="{{ $video->link }}" 
-            title="{{ $video->title }}" 
+        <iframe id="video-iframe"
+            src="{{ $video->link }}"
+            title="{{ $video->title }}"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" 
+            referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
         </iframe>
     </div>

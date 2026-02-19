@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
+    <meta name="description" content="@yield('description', 'O ConectaRim oferece informações confiáveis sobre nefrologia e acompanhamento para pacientes da Clínica do Rim.')">
+    <meta name="keywords" content="@yield('keywords', 'nefrologia, hemodiálise, clínica do rim, saúde renal, tratamento')">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
@@ -81,7 +83,7 @@
                     <div id="dropdown-admin" class="collapsible-header valign-wrapper nav-option">
                         <span class="material-icons">admin_panel_settings</span>Admin
                         <i class="material-icons right">arrow_drop_down</i>
-                    </div>                        
+                    </div>
                     <div id="dropdown-admin" class="collapsible-body">
                             @if (Auth::check())
                             <a href="{{ route('admin.dashboard') }}"> Dashboard</a>
