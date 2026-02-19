@@ -1,9 +1,9 @@
 @extends('layout')
 @section('title', 'Gerenciar Vídeos')
 @section('conteudo')
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/admin/indexVideo.css') }}">
-@endpush
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('css/admin/indexVideo.css') }}">
+    @endpush
 
     <div class="container" id="video-container">
         {{-- CABEÇALHO DA PÁGINA --}}
@@ -12,7 +12,7 @@
                 <h4>Gerenciar Vídeos</h4>
             </div>
             <div class="col s4 m2 right-align">
-                <span id="video-count" class="chip white-text">{{ $videos->total() }} vídeos</span>
+                <span id="video-count" class="chip blue white-text">{{ $videos->total() }} vídeos</span>
             </div>
         </div>
 
@@ -25,7 +25,8 @@
         @endif
 
         {{-- BOTÃO PARA ADICIONAR NOVO VÍDEO --}}
-        <a id="create-video" class="waves-effect waves-light btn modal-trigger blue" href="{{ route('admin.videos.create') }}">
+        <a id="create-video" class="waves-effect waves-light btn modal-trigger blue"
+            href="{{ route('admin.videos.create') }}">
             <i class="material-icons left">add</i>Adicionar Novo Vídeo
         </a>
 
@@ -34,40 +35,47 @@
             <table class="striped highlight table">
                 <thead>
                     <tr>
-                    <th>Título</th>
-                    <th>Usuário</th>
-                    <th id="action-th" class="center-align">Ações</th>
-                </tr>
-            </thead>
-            <tbody class="responsive-table-body">
-                @forelse ($videos as $video)
-                <tr>
-                    <td>{{ $video->title }}</td>
-                    <td>{{ $video->user->name }}</td>
-                        <td class="center-align">
-                            <a href="{{ route('admin.videos.edit', $video->id) }}"
-                                class="btn-floating modal-trigger waves-effect waves-light blue">
-                                <i class="material-icons">edit</i></a>
+                        <th>Título</th>
+                        <th>Usuário</th>
+                        <th id="action-th" class="center-align">Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="responsive-table-body">
+                    @forelse ($videos as $video)
+                        <tr>
+                            <td>{{ $video->title }}</td>
+                            <td>{{ $video->user->name }}</td>
+                            <td class="center-align">
+                                <a href="{{ route('admin.videos.edit', $video->id) }}"
+                                    class="btn-floating modal-trigger waves-effect waves-light blue">
+                                    <i class="material-icons">edit</i></a>
                                 <a href="#delete-{{ $video->id }}"
-                                class="btn-floating modal-trigger waves-effect waves-light orange darken-2"><i
-                                class="material-icons">delete</i></a>
-                        </td>
-                    </tr>
+                                    class="btn-floating modal-trigger waves-effect waves-light orange darken-2"><i
+                                        class="material-icons">delete</i></a>
+
+                                {{-- Substitua o form existente por este botão --}}
+                                <a href="#showcase-{{ $video->id }}"
+                                    class="btn-floating modal-trigger waves-effect waves-light {{ $video->is_showcase ? 'yellow darken-2' : 'green' }}">
+                                    <i class="material-icons">star</i>
+                                </a>
+
+                            </td>
+                        </tr>
                     @empty
-                    <tr>
-                        <td colspan="3">Nenhum vídeo cadastrado.</td>
-                    </tr>
+                        <tr>
+                            <td colspan="3">Nenhum vídeo cadastrado.</td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
-            
-            {{-- LINKS DE PAGINAÇÃO --}}
-            <div class="center-align" id="pagination">
-                {{ $videos->links('custom.pagination') }}
-            </div>
+
+        {{-- LINKS DE PAGINAÇÃO --}}
+        <div class="center-align" id="pagination">
+            {{ $videos->links('custom.pagination') }}
         </div>
-        
+    </div>
+
 
     {{-- ================================================= --}}
     {{-- MODAIS --}}
@@ -109,6 +117,32 @@
     @foreach ($videos as $video)
         {{-- @include('admin.modal.edit', ['video' => $video]) --}}
         @include('admin.modal.delete', ['video' => $video])
+
+        {{-- Modal de Confirmação Showcase --}}
+        <div id="showcase-{{ $video->id }}" class="modal" style="width: 400px; border-radius: 8px;">
+            <div class="modal-content" style="padding: 20px;">
+                <h5 style="margin-top: 0; margin-bottom: 8px;">
+                    <i class="material-icons left yellow-text text-darken-2">star</i>
+                    {{ $video->is_showcase ? 'Vídeo em Destaque' : 'Confirmar Destaque' }}
+                </h5>
+                @if ($video->is_showcase)
+                    <p class="grey-text">Este vídeo já está definido como destaque na página inicial.</p>
+                @else
+                    <p class="grey-text">Deseja definir <b>{{ $video->title }}</b> como vídeo em destaque?</p>
+                @endif
+            </div>
+            <div class="modal-footer" style="padding: 4px 20px 20px;">
+                @if ($video->is_showcase)
+                    <a href="#!" class="modal-close btn-flat blue white-text">OK</a>
+                @else
+                    <form action="{{ route('admin.videos.showcase', $video->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        <a href="#!" class="modal-close btn-flat grey-text">Cancelar</a>
+                        <button type="submit" class="btn-flat blue white-text">Definir destaque</button>
+                    </form>
+                @endif
+            </div>
+        </div>
     @endforeach
 
     @if ($errors->any())

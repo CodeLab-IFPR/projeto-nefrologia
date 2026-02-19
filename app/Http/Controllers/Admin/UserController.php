@@ -9,12 +9,19 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!auth()->user()->can_manage_users) {
+                abort(403, 'Acesso negado. Você não tem permissão para gerenciar usuários.');
+            }
+            return $next($request);
+        });
+    }
     public function index()
     {
-        //
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -49,11 +56,14 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'can_manage_users' => $request->has('can_manage_users') ? 1 : 0,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Usuário criado com sucesso!');
-    }
+        return redirect()->route('admin.users.index')->with('success', 'Usuário criado com sucesso!');    }
 
+    /**
+     * Display the specified resource.
+     */
     /**
      * Display the specified resource.
      */
@@ -67,7 +77,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -75,7 +85,33 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|confirmed|min:8',
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'email.unique' => 'Este email já está em uso por outro usuário.',
+            'password.confirmed' => 'A confirmação da senha não corresponde.',
+            'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // Só permite alterar can_manage_users se não for o próprio usuário
+        if (auth()->id() !== $user->id) {
+            $user->can_manage_users = $request->has('can_manage_users') ? 1 : 0;
+        }
+
+        // Só atualiza a senha se o usuário preencher o campo
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.users.index')->with('success', 'Usuário atualizado com sucesso!');
     }
 
     /**
@@ -83,6 +119,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->update(['deleted_by' => auth()->id()]);
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'Usuário removido com sucesso!');
     }
 }

@@ -14,6 +14,7 @@ Route::redirect('/sobre', 'about');
 // Rotas do SiteController
 Route::resource('home', SiteController::class);
 Route::get('/', [SiteController::class, 'index'])->name('user.index');
+Route::get('/videos', [SiteController::class, 'videos'])->name('videos.index');
 Route::get('/video/{slug}', [SiteController::class, 'details'])->name('video.details');
 
 // Rotas de login
@@ -38,6 +39,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     // Atualizar senha
     Route::post('/seguranca', [AdminController::class, 'updatePassword'])->name('seguranca.update');
+
+    // Definir Vídeo de destaque
+    Route::post('videos/{video}/showcase', [VideoController::class, 'setShowcase'])->name('videos.showcase');
     // Rotas para o vídeo, CRUD completo
     Route::resource('videos', VideoController::class);
 

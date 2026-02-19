@@ -26,14 +26,15 @@
                 </a>
             </div>
 
-            {{-- Card: Cadastrar Usuário --}}
-            <div class="col s12 m6 l3 panel-card-col">
-                <a href="{{ route('admin.users.create') }}" class="panel-card">
-                    <i class="material-icons">person_add</i>
-                    <span>Cadastrar Usuário</span>
-                </a>
-            </div>
-
+            @if(auth()->user()->can_manage_users)
+                {{-- Card: Gerenciar Usuários --}}
+                <div class="col s12 m6 l3 panel-card-col">
+                    <a href="{{ route('admin.users.index') }}" class="panel-card">
+                        <i class="material-icons">people</i>
+                        <span>Gerenciar Usuários</span>
+                    </a>
+                </div>
+            @endif
 
             {{-- Card: Alterar Senha --}}
             <div class="col s12 m6 l3 panel-card-col">

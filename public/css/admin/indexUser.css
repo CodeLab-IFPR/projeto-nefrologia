@@ -1,20 +1,20 @@
 @import url('../variables.css');
 
-#video-container {
+#user-container {
     margin-top: 30px;
     margin-bottom: 30px;
 }
 
-#video-container h4 {
+#user-container h4 {
     margin: 0;
     font-size: 2rem;
 }
 
-#create-video{
+#create-user {
     margin-bottom: 20px;
 }
 
-.blue{
+.blue {
     background-color: var(--main-color);
 }
 
@@ -36,13 +36,8 @@
     vertical-align: middle;
 }
 
-.responsive-table-body a{
+.responsive-table-body a {
     background-color: var(--main-color);
-}
-
-#pagination {
-    margin-top: 20px;
-    background-color: none;
 }
 
 .modal-footer button {
@@ -55,37 +50,36 @@
 }
 
 @media screen and (max-width: 425px) {
-    #video-count{
+    #user-count {
         font-size: 0.8rem;
     }
 
-    #create-video{
+    #create-user {
         font-size: 0.9rem !important;
     }
-
 }
 
 @media screen and (max-width: 600px) {
-    #showcase-{{ $video->id }}.modal {
+    .modal {
         width: 95% !important;
         max-height: 90% !important;
     }
 
-    #showcase-{{ $video->id }}.modal .modal-content h5 {
+    .modal .modal-content h5 {
         font-size: 1.2rem;
     }
 
-    #showcase-{{ $video->id }}.modal .modal-content p {
+    .modal .modal-content p {
         font-size: 0.9rem;
     }
 
-    #showcase-{{ $video->id }}.modal .modal-footer {
+    .modal .modal-footer {
         padding: 4px 15px 15px;
     }
 }
 
 @media screen and (min-width: 601px) and (max-width: 992px) {
-    #showcase-{{ $video->id }}.modal {
+    .modal {
         width: 80% !important;
     }
 }
