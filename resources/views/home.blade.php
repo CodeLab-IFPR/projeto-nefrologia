@@ -8,6 +8,8 @@
 @endpush
 @extends('layout')
 @section('title', 'Home')
+@section('description', 'Bem-vindo ao ConectaRim. Aqui você encontrará informações confiáveis, vídeos educativos e materiais para ajudar no entendimento do tratamento de hemodiálise.')
+@section('keywords', 'conectarim, início, hemodiálise, educação em saúde, nefrologia')
 @section('conteudo')
     <div class="container top-section">
         <div class="grid">
