@@ -77,6 +77,90 @@
         </div>
     </div>
 
+    <hr class="thin-divider top">
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Explore nosso Conteúdo</h2>
+            <p class="section-subtitle">
+                Material educativo organizado para facilitar seu entendimento
+            </p>
+
+            <div class="grid-cards">
+                <a href="/fosforo" class="card-link">
+                    <div class="card primary">
+                        <div class="card-header primary">
+                            <div class="card-top">
+                                <div class="icon-box">🧂</div>
+                                <span class="card-badge">Guia de Leitura</span>
+                            </div>
+                            <h3>Alimentos e Fósforo</h3>
+                            <p>
+                                Guia alimentar para pacientes em hemodiálise com
+                                classificação de alimentos conforme o teor de fósforo.
+                            </p>
+                        </div>
+
+                        <div class="card-body">
+                            <p>
+                                Consulte a divisão entre alimentos com baixo,
+                                moderado e alto fósforo, para ajudar no controle
+                                diário da dieta.
+                            </p>
+
+                            <ul class="list">
+                                <li>Baixo Fósforo (até 100 mg)</li>
+                                <li>Moderado (101–200 mg)</li>
+                                <li>Alto (acima de 200 mg)</li>
+                            </ul>
+
+                            <span class="card-action primary-text">
+                                Ver alimentos →
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/potassio" class="card-link">
+                    <div class="card accent">
+                        <div class="card-header accent">
+                            <div class="card-top">
+                                <div class="icon-box">🍎</div>
+                                <span class="card-badge">Guia de Leitura</span>
+                            </div>
+                            <h3>Alimentos e Potássio</h3>
+                            <p>
+                                Guia prático para pacientes em hemodiálise com
+                                classificação de alimentos por teor de potássio.
+                            </p>
+                        </div>
+
+                        <div class="card-body">
+                            <p>
+                                Consulte a divisão entre alimentos com baixo,
+                                moderado e alto potássio, para ajudar no 
+                                controle diário da dieta.
+                            </p>
+
+                            <ul class="list">
+                                <li>Baixo Potássio (até 100 mg)</li>
+                                <li>Moderado (101–200 mg)</li>
+                                <li>Alto (acima de 200 mg)</li>
+                            </ul>
+
+                            <span class="card-action accent-text">
+                                Ver alimentos →
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="thin-divider bottom">
+
     <div class="container carousel">
         <div class="carousel-header">
             <h2 class="carousel-title">Conheça Nossos Vídeos</h2>
