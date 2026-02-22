@@ -23,17 +23,26 @@ class SiteController extends Controller
     }
 
     public function details($slug)
-{
-    $video = Video::where('slug', $slug)->firstOrFail();
+    {
+        $video = Video::where('slug', $slug)->firstOrFail();
 
-    $previousVideo = Video::where('id', '<', $video->id)
-        ->orderBy('id', 'desc')
-        ->first();
+        $previousVideo = Video::where('id', '<', $video->id)
+            ->orderBy('id', 'desc')
+            ->first();
 
-    $nextVideo = Video::where('id', '>', $video->id)
-        ->orderBy('id', 'asc')
-        ->first();
+        $nextVideo = Video::where('id', '>', $video->id)
+            ->orderBy('id', 'asc')
+            ->first();
 
-    return view('video.details', compact('video', 'previousVideo', 'nextVideo'));
-}
+        return view('video.details', compact('video', 'previousVideo', 'nextVideo'));
+    }
+
+    public function fosforo()
+    {
+        return view('fosforo');
+    }
+    public function potassio()
+    {
+        return view('potassio');
+    }
 }

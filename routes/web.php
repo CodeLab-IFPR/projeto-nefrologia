@@ -16,6 +16,8 @@ Route::resource('home', SiteController::class);
 Route::get('/', [SiteController::class, 'index'])->name('user.index');
 Route::get('/videos', [SiteController::class, 'videos'])->name('videos.index');
 Route::get('/video/{slug}', [SiteController::class, 'details'])->name('video.details');
+Route::get('/fosforo', [SiteController::class, 'fosforo'])->name('fosforo.index');
+Route::get('/potassio', [SiteController::class, 'potassio'])->name('potassio.index');
 
 // Rotas de login
 Route::view('/login', 'login.form')->name('login.form');
