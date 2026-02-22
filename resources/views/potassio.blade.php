@@ -220,10 +220,7 @@
         </p>
 
         <ul class="tips-sublist">
-          <li>São descascados;</li>
-          <li>Cortados em pedaços pequenos;</li>
-          <li>Cozidos em bastante água;</li>
-          <li>E a água do cozimento é descartada.</li>
+          <li>São descascados; Cortados em pedaços pequenos; Cozidos em bastante água; E a água do cozimento é descartada.</li>
         </ul>
 
         <p class="tips-warning">
