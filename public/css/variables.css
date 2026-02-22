@@ -2,6 +2,7 @@
     --bg-color: #f8f9fa;
     --container-bg-color: #ffffff;
     --container-border-color: #e0e0e0;
+    --border: #e5e7eb;
     --main-color: #187bcd;
     --main-color-dark: #1e3a8a;
     --main-color-hover: #1467af;
@@ -12,11 +13,21 @@
     --font-dark-color: #495057;
     --font-gray-color: #777;
     --font-white-color: #ffffff;
+    --dot-gray-color: #94a3b8;
     --input-color: #ced4da;
     --input-color-focus: #80bdff;
     --message-color: #f4f5f6;
     --error-color: #dc3545;
     --success-color: #388e3c;
     --shadow-color: #0000001a;
+    --low-bg: #ecfdf5;
+    --low-header: #10b981;
+    --low-text: #065f46;
+    --moderate-bg: #fffbeb;
+    --moderate-header: #f59e0b;
+    --moderate-text: #92400e;
+    --high-bg: #fef2f2;
+    --high-header: #ef4444;
+    --high-text: #7f1d1d;
     --radius: 0.75rem;
 }
