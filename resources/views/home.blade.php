@@ -1,33 +1,191 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+@endpush
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js\home.js') }}"></script>
 @endpush
 @extends('layout')
 @section('title', 'Home')
+@section('description', 'Bem-vindo ao ConectaRim. Aqui você encontrará informações confiáveis, vídeos educativos e materiais para ajudar no entendimento do tratamento de hemodiálise.')
+@section('keywords', 'conectarim, início, hemodiálise, educação em saúde, nefrologia')
 @section('conteudo')
-   <div class="row container" id="home-container">
-    @foreach ($videos as $video)
-        <div class="col s12 m6 l4 xl3" id="video">
-            <a href="{{ route('video.details', $video->slug) }}"> 
-                <div class="video-card">
-                    <div class="video-thumb">
-                        <img src="{{ $video->thumbnail }}" alt="{{ $video->title }}">
+    <div class="container top-section">
+        <div class="grid">
+            <div class="grid-item" name="titulo">
+                <div class="title-image"></div>
+                <h1 class="grid-title">Bem-vindo ao ConectaRim</h1>
+            </div>
+
+            <div class="grid-item" name="descricao">
+                <p class="grid-description">
+                    Aqui você encontrará informações confiáveis, vídeos educativos e materiais
+                    para ajudar no entendimento do tratamento de hemodiálise. Nosso objetivo é
+                    oferecer conhecimento acessível e apoio a pacientes e familiares.
+                </p>
+            </div>
+
+            <div class="grid-item" name="video">
+                <div class="grid-video-container">
+                    @if ($showcaseVideo)
+                        <iframe src="{{ $showcaseVideo->link }}" title="{{ $showcaseVideo->title }}"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    @else
+                        <div class="video-placeholder">
+                            Nenhum vídeo em destaque
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+            <div class="grid-item" name="botoes">
+                <div class="item-buttons">
+                    {{-- <button class="btn btn-primary" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });">
+                        <span class="material-symbols-outlined">favorite</span>
+                        Saiba mais
+                    </button> --}}
+                    <a href="{{ route('videos.index') }}" class="btn btn-outline">
+                        <span class="material-symbols-outlined">video_library</span>
+                        Ver mais vídeos
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid-item" name="stats">
+                <div class="grid-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <span class="material-symbols-outlined">play_circle</span>
+                        </div>
+                        <div class="stat-title">{{ $nearestMultipleOfFive }}+ Vídeos</div>
                     </div>
-                                        
-                    <div class="video-textos">
-                        <h6 class="video-titulo">
-                            {{ $video->title }}
-                        </h6>
-                        <p class="video-desc">
-                            {{ Str::limit($video->description, 115, '...') }}
-                        </p>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <span class="material-symbols-outlined">healing</span>
+                        </div>
+                        <div class="stat-title">Foco no Cuidado</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <span class="material-symbols-outlined">favorite</span>
+                        </div>
+                        <div class="stat-title">100% de Apoio</div>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
-    @endforeach
-</div>
+    </div>
 
-<div class="row center" id="pagination-container">
-    {{ $videos->links('custom.pagination') }}
-</div>
+    <hr class="thin-divider top">
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Explore nosso Conteúdo</h2>
+            <p class="section-subtitle">
+                Material educativo organizado para facilitar seu entendimento
+            </p>
+
+            <div class="grid-cards">
+                <a href="/fosforo" class="card-link">
+                    <div class="card primary">
+                        <div class="card-header primary">
+                            <div class="card-top">
+                                <div class="icon-box">🧂</div>
+                                <span class="card-badge">Guia de Leitura</span>
+                            </div>
+                            <h3>Alimentos e Fósforo</h3>
+                            <p>
+                                Guia alimentar para pacientes em hemodiálise com
+                                classificação de alimentos conforme o teor de fósforo.
+                            </p>
+                        </div>
+
+                        <div class="card-body">
+                            <p>
+                                Consulte a divisão entre alimentos com baixo,
+                                moderado e alto fósforo, para ajudar no controle
+                                diário da dieta.
+                            </p>
+
+                            <ul class="list">
+                                <li>Baixo Fósforo (até 100 mg)</li>
+                                <li>Moderado (101–200 mg)</li>
+                                <li>Alto (acima de 200 mg)</li>
+                            </ul>
+
+                            <span class="card-action primary-text">
+                                Ver alimentos →
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/potassio" class="card-link">
+                    <div class="card accent">
+                        <div class="card-header accent">
+                            <div class="card-top">
+                                <div class="icon-box">🍎</div>
+                                <span class="card-badge">Guia de Leitura</span>
+                            </div>
+                            <h3>Alimentos e Potássio</h3>
+                            <p>
+                                Guia prático para pacientes em hemodiálise com
+                                classificação de alimentos por teor de potássio.
+                            </p>
+                        </div>
+
+                        <div class="card-body">
+                            <p>
+                                Consulte a divisão entre alimentos com baixo,
+                                moderado e alto potássio, para ajudar no 
+                                controle diário da dieta.
+                            </p>
+
+                            <ul class="list">
+                                <li>Baixo Potássio (até 100 mg)</li>
+                                <li>Moderado (101–200 mg)</li>
+                                <li>Alto (acima de 200 mg)</li>
+                            </ul>
+
+                            <span class="card-action accent-text">
+                                Ver alimentos →
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="thin-divider bottom">
+
+    <div class="container carousel">
+        <div class="carousel-header">
+            <h2 class="carousel-title">Conheça Nossos Vídeos</h2>
+            <div class="carousel-controls">
+                <button class="btn carousel swiper-button-prev"></button>
+                <button class="btn carousel swiper-button-next"></button>
+            </div>
+        </div>
+
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                @foreach ($videos as $video)
+                    <div class="swiper-slide carousel-video">
+                        <div class="video-card">
+                            <iframe src="{{ $video->link }}" title="{{ $video->title }}" allowfullscreen>
+                            </iframe>
+                            <div class="carousel-video-title">{{ $video->title }}</div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+    </div>
 @endsection
