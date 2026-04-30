@@ -88,6 +88,24 @@
                 Material educativo organizado para facilitar seu entendimento
             </p>
 
+            <div class="card warning-card">
+                <div class="warning-card-icon">
+                    <span class="material-symbols-outlined">warning</span>
+                </div>
+                <div class="warning-card-content">
+                    <div class="warning-card-top">
+                        <span class="card-badge warning-badge">Atenção</span>
+                        <h3 class="warning-card-title">CARAMBOLA: NÃO COMA!</h3>
+                    </div>
+                    <p class="warning-card-text">
+                        Para quem faz hemodiálise, a carambola possui uma toxina perigosa que o corpo e nem mesmo a máquina de hemodiálise consegue eliminar.
+                    </p>
+                    <p class="warning-card-highlight">
+                        Risco de morte. Proteja sua saúde!
+                    </p>
+                </div>
+            </div>
+
             <div class="grid-cards">
                 <a href="/fosforo" class="card-link">
                     <div class="card primary">
