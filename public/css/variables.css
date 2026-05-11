@@ -29,5 +29,7 @@
     --high-bg: #fef2f2;
     --high-header: #ef4444;
     --high-text: #7f1d1d;
+    --background-error-box: #ff919c1a;
+    --light-error-border: #f66d7b78;
     --radius: 0.75rem;
 }
